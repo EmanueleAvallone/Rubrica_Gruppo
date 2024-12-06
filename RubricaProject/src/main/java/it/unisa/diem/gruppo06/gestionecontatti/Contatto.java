@@ -111,7 +111,7 @@ public class Contatto {
     
     /**
      * @brief Imposta il nome del contatto
-     * @param nome Nome da assegnare al contatto 
+     * @param[in] nome Nome da assegnare al contatto 
      * 
      */
     
@@ -121,7 +121,7 @@ public class Contatto {
     
      /**
      * @brief Imposta il cognome del contatto
-     * @param cognome Cognome da assegnare al contatto
+     * @param[in] cognome Cognome da assegnare al contatto
      * 
      */
     
@@ -131,7 +131,7 @@ public class Contatto {
     
      /**
      * @brief Imposta i numeri di telefono del contatto
-     * @param numeriTelefono Array di Numeri di telefono da assegnare al contatto
+     * @param[in] numeriTelefono Array di Numeri di telefono da assegnare al contatto
      * 
      */
     
@@ -141,7 +141,7 @@ public class Contatto {
     
     /**
      * @brief Imposta i numeri di telefono del contatto
-     * @param email Array di indirizzi E-mail da assegnare al contatto
+     * @param[in] email Array di indirizzi E-mail da assegnare al contatto
      * 
      */
     
