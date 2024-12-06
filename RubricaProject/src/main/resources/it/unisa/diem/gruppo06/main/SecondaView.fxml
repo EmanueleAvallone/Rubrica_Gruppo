@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="483.0" prefWidth="598.0" style="-fx-background-color: #2c2c2c;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.unisa.diem.gruppo06.interfacciagrafica.InfoController">
+   <children>
+      <Button fx:id="annulla" layoutX="1.0" layoutY="1.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#annullaBtn" prefHeight="33.0" prefWidth="32.0" style="-fx-background-color: #2c2c2c;">
+         <font>
+            <Font size="14.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="33.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@indietro.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Pane layoutX="1.0" layoutY="37.0" prefHeight="448.0" prefWidth="598.0" style="-fx-background-color: #f3f3f3;">
+         <children>
+            <HBox layoutX="14.0" layoutY="14.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="237.0" prefWidth="333.0">
+               <children>
+                  <VBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="422.0" prefWidth="473.0">
+                     <children>
+                        <Label text="Nome">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="nomeField" />
+                        <Label text="Cognome">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets top="10.0" />
+                           </VBox.margin>
+                        </Label>
+                        <TextField fx:id="cognomeField" />
+                        <Label text="Numero">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets top="10.0" />
+                           </VBox.margin>
+                        </Label>
+                        <HBox prefHeight="27.0" prefWidth="203.0">
+                           <children>
+                              <TextField fx:id="numeroField1" prefHeight="27.0" prefWidth="155.0" />
+                              <TextField fx:id="numeroField2" layoutX="10.0" layoutY="10.0" prefHeight="31.0" prefWidth="187.0" />
+                              <TextField fx:id="numeroField3" prefHeight="27.0" prefWidth="155.0" />
+                           </children>
+                        </HBox>
+                        <Label text="E-mail">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets top="10.0" />
+                           </VBox.margin>
+                        </Label>
+                        <HBox layoutX="10.0" layoutY="118.0" prefHeight="27.0" prefWidth="203.0">
+                           <children>
+                              <TextField fx:id="emailField1" prefHeight="27.0" prefWidth="155.0" />
+                              <TextField fx:id="emailField2" layoutX="10.0" layoutY="10.0" prefHeight="27.0" prefWidth="155.0" />
+                              <TextField fx:id="emailField3" layoutX="112.0" layoutY="10.0" prefHeight="31.0" prefWidth="168.0" />
+                           </children>
+                        </HBox>
+                     </children>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </VBox>
+               </children>
+            </HBox>
+         </children>
+      </Pane>
+      <Button fx:id="salva" layoutX="556.0" layoutY="1.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#salvaInfoBtn" prefHeight="33.0" prefWidth="32.0" style="-fx-background-color: #2c2c2c;">
+         <font>
+            <Font size="14.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <graphic>
+            <ImageView fitHeight="32.0" fitWidth="54.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@conferma.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+   </children>
+</AnchorPane>
