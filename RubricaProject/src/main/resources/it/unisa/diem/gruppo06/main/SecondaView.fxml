@@ -18,7 +18,7 @@
          <graphic>
             <ImageView fitHeight="33.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@indietro.png" />
+                  <Image url="@annulla.png" />
                </image>
             </ImageView>
          </graphic>
@@ -93,7 +93,7 @@
          <graphic>
             <ImageView fitHeight="32.0" fitWidth="54.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@conferma.png" />
+                  <Image url="@salva.png" />
                </image>
             </ImageView>
          </graphic>
