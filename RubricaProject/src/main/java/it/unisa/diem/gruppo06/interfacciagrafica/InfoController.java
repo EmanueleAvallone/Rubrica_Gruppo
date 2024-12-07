@@ -7,6 +7,17 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
+/**
+ * @brief Classe che gestisce l'interfaccia principale visualizzata dall'utente
+ * 
+ * La classe 'InfoController' gestisce le azioni associate ad i tasti
+ * che può premere l'utente nella scena secondaria. 
+ * Questa scena consente di visualizzare i dettagli di un contatto 
+ * selezionato dalla rubrica, offrendo la possibilità di modificare
+ * i dati esistenti o, in alternativa, compilare i campi vuoti qualora
+ * l'utente abbia precedentemente scelto di aggiungere un nuovo contatto,
+ * 
+ */
 public class InfoController {
 
     @FXML
