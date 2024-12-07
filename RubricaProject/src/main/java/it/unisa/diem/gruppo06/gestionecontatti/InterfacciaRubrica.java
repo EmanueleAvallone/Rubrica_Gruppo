@@ -21,7 +21,7 @@ public interface InterfacciaRubrica {
      * 
      * Aggiunge un nuovo contatto specificato alla rubrica.
      * 
-     * @param [c] contatto da aggiungere.
+     * @param[in] c contatto da aggiungere.
      */
     public void creaContatto(Contatto c);
 
@@ -30,7 +30,7 @@ public interface InterfacciaRubrica {
      * 
      * Modifica un contatto specificato all'interno della rubrica.
      * 
-     * @param [c] contatto da modificare.
+     * @param[in] c contatto da modificare.
      */
     public void modificaContatto(Contatto c);
     
@@ -39,7 +39,7 @@ public interface InterfacciaRubrica {
      * 
      * Elimina un contatto specificato all'interno della rubrica.
      * 
-     * @param [c] contatto da eliminare.
+     * @param[in] c contatto da eliminare.
      */
     public void eliminaContatto(Contatto c);
  
@@ -48,7 +48,7 @@ public interface InterfacciaRubrica {
      * 
      * Cerca un contatto all'interno della rubrica.
      * 
-     * @param [c]contatto da cercare.
+     * @param[in] c contatto da cercare.
      * 
      * @return Il contatto trovato, oppure null se non esiste.
      * 

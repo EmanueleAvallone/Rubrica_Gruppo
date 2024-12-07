@@ -31,9 +31,8 @@ public class Rubrica implements InterfacciaRubrica {
     }
     
     /**
-    * @brief Aggiunge un nuovo contatto in rubrica
-    * 
-    * @param[in] c Contatto da aggiungere
+    * Per ulteriori dettagli, vedere il corrispondente metodo in 
+    * \ref InterfacciaRubrica::creaContatto(Contatto c) "InterfacciaRubrica.creaContatto".
     */
     
     @Override
@@ -42,19 +41,17 @@ public class Rubrica implements InterfacciaRubrica {
     }
     
     /**
-    * @brief Modifica un contatto esistente in rubrica
-    * 
-    * @param[in] c Contatto da modificare
+    * Per ulteriori dettagli, vedere il corrispondente metodo in 
+    * \ref InterfacciaRubrica::modificaContatto(Contatto c) "InterfacciaRubrica.modificaContatto".
     */
     
     @Override
     public void modificaContatto(Contatto c) {
     }
     
-     /**
-    * @brief Elimina un contatto esistente in rubrica
-    * 
-    * @param[in] c Contatto da eliminare
+    /**
+    * Per ulteriori dettagli, vedere il corrispondente metodo in 
+    * \ref InterfacciaRubrica::eliminaContatto(Contatto c) "InterfacciaRubrica.eliminaContatto".
     */
     
     @Override
@@ -62,11 +59,9 @@ public class Rubrica implements InterfacciaRubrica {
         
     }
 
-     /**
-    * @brief Cerca un contatto in rubrica
-    * 
-    * @param[in] c Contatto da cercare
-    * @return Il contatto trovato o "null" se non lo trova
+    /**
+    * Per ulteriori dettagli, vedere il corrispondente metodo in 
+    * \ref InterfacciaRubrica::cercaContatto(Contatto c) "InterfacciaRubrica.cercaContatto".
     */
     
     @Override
@@ -76,11 +71,11 @@ public class Rubrica implements InterfacciaRubrica {
        
     }
     
-     /**
-    * @brief Restituisce la lista dei contatti
-    * 
-    * @return Una lista di contatti
+    /**
+    * Per ulteriori dettagli, vedere il corrispondente metodo in 
+    * \ref InterfacciaRubrica::getLista() "InterfacciaRubrica.getLista".
     */
+    
     @Override
      public List<Contatto> getLista() {
      return null;

@@ -8,7 +8,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
 /**
- * @brief Classe che gestisce l'interfaccia principale visualizzata dall'utente
+ * @brief Classe che gestisce l'interfaccia secondaria visualizzata dall'utente
  * 
  * La classe 'InfoController' gestisce le azioni associate ad i tasti
  * che può premere l'utente nella scena secondaria. 

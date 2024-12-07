@@ -12,9 +12,9 @@ import java.io.IOException;
 /**
  * @brief Classe principale per l'applicazione JavaFX
  *
- * Questa classe avvia l'applicazione JavaFX, gestisce la scena principale 
- * e implementa il ridimensionamento per mantenere le proporzioni 
- * dell'interfaccia utente al variare delle dimensioni della finestra
+ * Questa classe avvia l'applicazione JavaFx fornendo i metodi
+ * necessari all'avvio della scena
+ * 
  */
 
 public class Main extends Application {
@@ -25,8 +25,7 @@ public class Main extends Application {
     /**
      * @brief Metodo di avvio dell'applicazione JavaFX
      *
-     * Inizializza la scena principale, applica il layout di base e aggiunge una trasformazione
-     * di scala e gestisce il ridimensionamento proporzionale
+     * Imposta la scena principale
      *
      * @param[in] stage Lo stage principale dell'applicazione.
      * @throws IOException Se il file FXML specificato non può essere caricato.
@@ -38,14 +37,13 @@ public class Main extends Application {
     }
 
      /**
-     * @brief Cambia la root della scena principale
+     * @brief Cambia la scena principale
      *
-     * Consente di cambiare la vista caricando un file FXML
+     * Consente di cambiare la scena caricando un file FXML
      *
      * @param[in] fxml Nome del file FXML da caricare
      * @throws IOException Se si verifica un errore durante il caricamento del file FXML
      *
-     * @post La root della scena principale sarà sostituita dal contenuto del nuovo file FXML
      */
     public static void setRoot(String fxml) throws IOException {
         
@@ -55,7 +53,7 @@ public class Main extends Application {
      * @brief Metodo principale per avviare l'applicazione
      *
      * @param[in] args Argomenti della linea di comando
-     * @post L'applicazione sarà avviata e verrà visualizzata la scena principale
+     * @post L'applicazione si avvia visualizzando la scena principale
      */
 
     public static void main(String[] args) {
