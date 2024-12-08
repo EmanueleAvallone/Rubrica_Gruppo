@@ -14,8 +14,8 @@ import javafx.scene.control.TextField;
  * che può premere l'utente nella scena secondaria. 
  * Questa scena consente di visualizzare i dettagli di un contatto 
  * selezionato dalla rubrica, offrendo la possibilità di modificare
- * i dati esistenti o, in alternativa, compilare i campi vuoti qualora
- * l'utente abbia precedentemente scelto di aggiungere un nuovo contatto,
+ * i dati esistenti o, in alternativa, compilare i campi vuoti per
+ * aggiungere un nuovo contatto,
  * 
  */
 public class InfoController {
