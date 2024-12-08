@@ -2,8 +2,11 @@ package it.unisa.diem.gruppo06.interfacciagrafica;
 
 import it.unisa.diem.gruppo06.main.Main;
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
@@ -18,7 +21,7 @@ import javafx.scene.control.TextField;
  * aggiungere un nuovo contatto,
  * 
  */
-public class InfoController {
+public class InfoController implements Initializable{
 
     @FXML
     private Button annulla;
@@ -49,5 +52,9 @@ public class InfoController {
 
     @FXML
     private void salvaInfoBtn(ActionEvent event) {
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
     }
 }
