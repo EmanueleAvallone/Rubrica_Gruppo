@@ -14,7 +14,7 @@ import javafx.scene.control.TextField;
  * @brief Classe che gestisce l'interfaccia secondaria visualizzata dall'utente
  * 
  * La classe 'InfoController' gestisce le azioni associate ad i tasti
- * che può premere l'utente nella scena secondaria. 
+ * presenti nella scena secondaria. 
  * Questa scena consente di visualizzare i dettagli di un contatto 
  * selezionato dalla rubrica, offrendo la possibilità di modificare
  * i dati esistenti o, in alternativa, compilare i campi vuoti per
@@ -53,7 +53,17 @@ public class InfoController implements Initializable{
     @FXML
     private void salvaInfoBtn(ActionEvent event) {
     }
-
+    
+    /**
+    * @brief Inizializza il controller
+    * 
+    * Il metodo inizializza tutti gli attributi del controller
+    * 
+    * @param[in] url Percorso del file FXML associato al controller
+    * @param[in] rb Collezione di risorse localizzate per l'applicazione
+    * 
+    */
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
     }
