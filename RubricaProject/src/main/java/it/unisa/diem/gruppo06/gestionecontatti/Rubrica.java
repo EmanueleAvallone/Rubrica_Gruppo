@@ -23,11 +23,11 @@ public class Rubrica implements InterfacciaRubrica {
     private List<Contatto> contatti;
     
     /**
-    * @brief Crea una Rubrica
+    * @brief Costruttore
     */
     
-    public void creaRubrica() {
-        
+    public Rubrica() {
+        this.contatti=new ArrayList<>();
     }
     
     /**
@@ -37,7 +37,7 @@ public class Rubrica implements InterfacciaRubrica {
     
     @Override
     public void creaContatto(Contatto c) {
-        
+        contatti.add(c);
     }
     
     /**
@@ -56,7 +56,7 @@ public class Rubrica implements InterfacciaRubrica {
     
     @Override
     public void eliminaContatto(Contatto c) {
-        
+        contatti.remove(c);
     }
 
     /**
@@ -78,6 +78,6 @@ public class Rubrica implements InterfacciaRubrica {
     
     @Override
      public List<Contatto> getLista() {
-     return null;
+        return this.contatti;
     }
 }
