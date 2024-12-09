@@ -35,6 +35,15 @@ public class Contatto {
     
     public Contatto(String nome, String cognome, String[] numeriTelefono, String[] email) {
        
+        this.nome=nome;
+        this.cognome=cognome;
+        for(int i=0;i<this.numeriTelefono.length;i++){
+            if(numeriTelefono[i]!=null)
+                this.numeriTelefono[i]=numeriTelefono[i];
+            if(email[i]!=null)
+                this.email[i]=email[i];
+        }
+        
         
     }
     
@@ -44,7 +53,7 @@ public class Contatto {
      */
     
     public String getNome() {
-        return null;
+        return this.nome;
     }
     
     /**
@@ -53,7 +62,7 @@ public class Contatto {
      */
     
     public String getCognome() {
-        return null;
+        return this.cognome;
     }
     
     /**
@@ -61,7 +70,7 @@ public class Contatto {
      * @return Il primo Numero di telefono del contatto
      */
     public String getNumeroTelefono1() {
-        return null;
+        return this.numeriTelefono[0];
     }
     
     /**
@@ -70,7 +79,7 @@ public class Contatto {
      */
     
     public String getNumeroTelefono2() {
-        return null;
+        return this.numeriTelefono[1];
     }
     
     /**
@@ -79,7 +88,7 @@ public class Contatto {
      */
     
     public String getNumeroTelefono3() {
-        return null;
+        return this.numeriTelefono[2];
     }
     
     /**
@@ -88,7 +97,7 @@ public class Contatto {
      */
     
     public String getEmail1() {
-        return null;
+        return this.email[0];
     }
     
     /**
@@ -97,7 +106,7 @@ public class Contatto {
      */
     
     public String getEmail2() {
-        return null;
+        return this.email[1];
     }
     
     /**
@@ -106,7 +115,7 @@ public class Contatto {
      */
     
     public String getEmail3() {
-        return null;
+        return this.email[2];
     }
     
     /**
@@ -116,7 +125,7 @@ public class Contatto {
      */
     
     public void setNome(String nome) {
-        
+        this.nome=nome;
     }
     
      /**
@@ -126,7 +135,7 @@ public class Contatto {
      */
     
     public void setCognome(String cognome) {
-        
+        this.cognome=cognome;
     }
     
      /**
@@ -136,7 +145,7 @@ public class Contatto {
      */
     
     public void setNumeriTelefono(String[] numeriTelefono) {
-        
+        this.numeriTelefono=numeriTelefono;
     }
     
     /**
@@ -146,7 +155,7 @@ public class Contatto {
      */
     
     public void setEmail(String[] email) {
-        
+        this.email=email;
     }
     
     
