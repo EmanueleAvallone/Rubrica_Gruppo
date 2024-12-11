@@ -43,8 +43,10 @@ public class Contatto {
             if(email[i]!=null)
                 this.email[i]=email[i];
         }
-        
-        
+        assert (nome!=null || cognome!=null): "Errore! Campi nome e cognome entrambi vuoti!";
+        assert (numeriTelefono.length<=3): "Sono stati inseriti più di tre numeri di telefono!";
+        assert (email.length<=3): "Sono state inserite più di tre email!";
+           
     }
     
     /**
