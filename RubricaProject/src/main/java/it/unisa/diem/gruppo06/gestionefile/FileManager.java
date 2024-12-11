@@ -4,10 +4,13 @@ import it.unisa.diem.gruppo06.gestionecontatti.Contatto;
 import it.unisa.diem.gruppo06.gestionecontatti.InterfacciaRubrica;
 import it.unisa.diem.gruppo06.gestionecontatti.Rubrica;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 
 
 /**
@@ -33,8 +36,41 @@ public class FileManager {
     * 
     * 
     */
-    public static void salvaSuFile(File selectedFile) {
-        
+    public static void salvaSuFile(File selectedFile) throws IOException {
+        InterfacciaRubrica r = RubricaController.getRubrica(); 
+        assert(r!=null);
+        try(PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter(selectedFile)))){
+
+
+            for(Contatto c : r.getLista() ){
+
+                pw.print(c.getNome());
+                pw.append(";");
+
+                pw.print(c.getCognome());
+                pw.append(";");
+
+                pw.print(c.getNumeriTelefono()[0]);
+                pw.append(",");
+
+                pw.print(c.getNumeriTelefono()[1]);
+                pw.append(",");
+
+                pw.print(c.getNumeriTelefono()[2]);
+                pw.append(";");//l'ultimo separatore è sempre \n
+
+                pw.print(c.getEmails()[0]);
+                pw.append(",");
+
+                pw.print(c.getEmails()[1]);
+                pw.append(",");
+
+                pw.print(c.getEmails()[2]);
+                pw.append("\n");//l'ultimo separatore è sempre \n
+            }
+
+
+        }
     }
 
     /**
