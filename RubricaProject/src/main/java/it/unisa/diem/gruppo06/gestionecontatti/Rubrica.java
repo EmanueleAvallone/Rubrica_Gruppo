@@ -25,39 +25,47 @@ public class Rubrica implements InterfacciaRubrica {
     /**
     * @brief Costruttore
     */
-    
     public Rubrica() {
         this.contatti=new ArrayList<>();
     }
     
+    
     /**
     * Per ulteriori dettagli, vedere il corrispondente metodo in 
     * \ref InterfacciaRubrica::creaContatto(Contatto c) "InterfacciaRubrica.creaContatto".
-    */
-    
+    */ 
     @Override
     public void creaContatto(Contatto c) {
         contatti.add(c);
     }
     
+    
     /**
     * Per ulteriori dettagli, vedere il corrispondente metodo in 
     * \ref InterfacciaRubrica::modificaContatto(Contatto c) "InterfacciaRubrica.modificaContatto".
-    */
-    
+    */  
     @Override
-    public void modificaContatto(Contatto c) {
+    public void modificaContatto(Contatto c,Contatto c1) {
+        int index;
+        if(contatti.contains(c)){
+            index = contatti.indexOf(c);
+            contatti.get(index).setNome(c1.getNome());
+            contatti.get(index).setCognome(c1.getCognome());
+            contatti.get(index).setNumeriTelefono(c1.getNumeriTelefono());
+            contatti.get(index).setEmails(c1.getEmails()); 
+        }
     }
+    
     
     /**
     * Per ulteriori dettagli, vedere il corrispondente metodo in 
     * \ref InterfacciaRubrica::eliminaContatto(Contatto c) "InterfacciaRubrica.eliminaContatto".
     */
-    
     @Override
     public void eliminaContatto(Contatto c) {
         contatti.remove(c);
     }
+    
 
     /**
     * Per ulteriori dettagli, vedere il corrispondente metodo in 
@@ -70,6 +78,7 @@ public class Rubrica implements InterfacciaRubrica {
         return null;
        
     }
+    
     
     /**
     * Per ulteriori dettagli, vedere il corrispondente metodo in 

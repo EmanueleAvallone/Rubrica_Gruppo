@@ -28,11 +28,13 @@ public interface InterfacciaRubrica {
      /**
      * @brief Modifica un contatto nella rubrica.
      * 
-     * Modifica un contatto specificato all'interno della rubrica.
+     * Modifica i campi del contatto c, utilizzando i valori dei 
+     * campi di c1.
      * 
      * @param[in] c contatto da modificare.
+     * @param[in] c1 contatto con i campi modificati.
      */
-    public void modificaContatto(Contatto c);
+    public void modificaContatto(Contatto c,Contatto c1);
     
      /**
      * @brief Elimina un contatto nella rubrica.

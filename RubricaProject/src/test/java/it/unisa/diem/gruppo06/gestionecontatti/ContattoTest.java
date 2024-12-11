@@ -74,7 +74,7 @@ public class ContattoTest {
         setUp();
         System.out.println("getNumeroTelefono");
         String[] expResult = {"3352637284","3443365728",null};
-        assertArrayEquals(expResult, contatto.getNumeroTelefono());        
+        assertArrayEquals(expResult, contatto.getNumeriTelefono());        
     }
     
     /**
@@ -92,11 +92,11 @@ public class ContattoTest {
      * Test of getEmail method, of class Contatto.
      */
     @Test
-    public void testGetEmail() {
+    public void testGetEmails() {
         setUp();
         System.out.println("getEmail");
         String[] expResult = {"e1@gmail.com","e2@gmail.com", ""};
-        assertArrayEquals(expResult,contatto.getEmail());
+        assertArrayEquals(expResult,contatto.getEmails());
     }
     
     /**
@@ -146,7 +146,7 @@ public class ContattoTest {
         System.out.println("setNumeriTelefono");
         contatto.setNumeriTelefono(numeri);
         String[] expResult = numeri;
-        assertArrayEquals(expResult, contatto.getNumeroTelefono());
+        assertArrayEquals(expResult, contatto.getNumeriTelefono());
     }
 
     /**
@@ -158,8 +158,8 @@ public class ContattoTest {
         setUp();
         String[] email = {"g@gmail.com","greg@outlook.com", null};        
         System.out.println("setNumeriTelefono");
-        contatto.setEmail(email);
+        contatto.setEmails(email);
         String[] expResult = email;
-        assertArrayEquals(expResult, contatto.getEmail());
+        assertArrayEquals(expResult, contatto.getEmails());
     }
 }

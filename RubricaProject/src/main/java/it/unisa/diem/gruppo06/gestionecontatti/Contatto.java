@@ -43,8 +43,10 @@ public class Contatto {
             if(email[i]!=null)
                 this.email[i]=email[i];
         }
-        
-        
+        assert (nome!=null || cognome!=null): "Errore! Campi nome e cognome entrambi vuoti!";
+        assert (numeriTelefono.length<=3): "Sono stati inseriti più di tre numeri di telefono!";
+        assert (email.length<=3): "Sono state inserite più di tre email!";
+           
     }
     
     /**
@@ -69,7 +71,7 @@ public class Contatto {
      * @brief Restituisce il vettore dei numeri di telefono del contatto
      * @return I Numeri di telefono del contatto
      */
-    public String[] getNumeroTelefono() {
+    public String[] getNumeriTelefono() {
         return numeriTelefono;
     }
     
@@ -86,7 +88,7 @@ public class Contatto {
      * @return Le email del contatto
      */
     
-    public String[] getEmail() {
+    public String[] getEmails() {
         return this.email;
     }
     
@@ -98,6 +100,7 @@ public class Contatto {
     public String getEmail1() {
         return this.email[0];
     }
+    
     
     /**
      * @brief Imposta il nome del contatto
@@ -135,7 +138,7 @@ public class Contatto {
      * 
      */
     
-    public void setEmail(String[] email) {
+    public void setEmails(String[] email) {
         this.email=email;
     }
 }
