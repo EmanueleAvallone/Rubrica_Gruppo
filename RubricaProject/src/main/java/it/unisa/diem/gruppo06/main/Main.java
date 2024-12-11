@@ -33,26 +33,13 @@ public class Main extends Application {
     
     @Override
     public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("FirstViewDownBW"), 598, 482);
+        scene = new Scene(new FXMLLoader(Main.class.getResource("FirstViewDownBW.fxml")).load(), 598, 482);
         stage.setTitle("Rubrica");
         stage.setScene(scene);
         stage.show();
     }
 
-    /**
-     * @brief 
-     *
-     * DA SCRIVEREEEEEEEEEEEEEEEEEEEEEE
-     *
-     * @param[in] 
-     * @throws 
-     *
-     */
-    
-    private static Parent loadFXML(String fxml) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource(fxml + ".fxml"));
-        return fxmlLoader.load();
-    }
+   
      /**
      * @brief Cambia la scena principale
      *
@@ -63,7 +50,7 @@ public class Main extends Application {
      *
      */
     public static void setRoot(String fxml) throws IOException {
-        scene.setRoot(loadFXML(fxml));
+        scene.setRoot(new FXMLLoader(Main.class.getResource(fxml)).load());
     }
 
      /**

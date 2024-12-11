@@ -8,12 +8,8 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.List;
 import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -88,7 +84,7 @@ public class FileManagerTest {
         
         for(int i=0; i<rubrica.getLista().size(); i++){
             RubricaController.getRubrica().creaContatto(rubrica.getLista().get(0)); 
-//Passo tutti i contatti della rubrica creata a RubricaController
+        //Passo tutti i contatti della rubrica creata a RubricaController
         }
         // Salvataggio della rubrica nel file
         FileManager.salvaSuFile(outputFile);
