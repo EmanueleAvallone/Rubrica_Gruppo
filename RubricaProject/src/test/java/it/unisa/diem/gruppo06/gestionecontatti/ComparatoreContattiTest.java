@@ -49,7 +49,9 @@ public class ComparatoreContattiTest {
         assertEquals(expResult, result);
         
     }
-     public void testCompare3() { 
+    
+    @Test
+    public void testCompare3() { 
         String[] numeri = { "3352637284","3443365728", null};
         String[] email = {"e1@gmail.com","e2@gmail.com", null};
         
