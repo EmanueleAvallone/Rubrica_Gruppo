@@ -100,24 +100,6 @@ public class Contatto {
     }
     
     /**
-     * @brief Restituisce la seconda email del contatto
-     * @return La Seconda email del contatto
-     */
-    
-    public String getEmail2() {
-        return this.email[1];
-    }
-    
-    /**
-     * @brief Restituisce la terza email del contatto
-     * @return La Terza email del contatto
-     */
-    
-    public String getEmail3() {
-        return this.email[2];
-    }
-    
-    /**
      * @brief Imposta il nome del contatto
      * @param[in] nome Nome da assegnare al contatto 
      * 
@@ -156,8 +138,4 @@ public class Contatto {
     public void setEmail(String[] email) {
         this.email=email;
     }
-    
-    
-    
-    
 }
