@@ -74,7 +74,8 @@ public class Rubrica implements InterfacciaRubrica {
     
     @Override
     public List<Contatto> cercaContatto(String searchText) {
-       List<Contatto> filteredContacts = new ArrayList<>();
+      searchText=searchText.toLowerCase();
+      List<Contatto> filteredContacts = new ArrayList<>();
         for (Contatto contact : this.getLista()) {
         if (contact.getNome().toLowerCase().contains(searchText) || 
             contact.getCognome().toLowerCase().contains(searchText)) {

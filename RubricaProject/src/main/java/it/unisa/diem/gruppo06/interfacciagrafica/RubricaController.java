@@ -105,7 +105,7 @@ public class RubricaController implements Initializable{
         email.setCellValueFactory(new PropertyValueFactory<>("email1"));
         
         searchField.textProperty().addListener((observable, oldValue, newValue) -> {
-            aggiornaTabella(newValue.toLowerCase());
+            aggiornaTabella(newValue);
         });
         
         table1.setItems(contatti);
