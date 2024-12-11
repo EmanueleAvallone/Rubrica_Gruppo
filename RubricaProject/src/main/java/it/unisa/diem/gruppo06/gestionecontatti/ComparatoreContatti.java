@@ -1,8 +1,6 @@
-
 package it.unisa.diem.gruppo06.gestionecontatti;
 
 import java.util.Comparator;
-
 
 /**
  * @brief Classe che implementa un comparatore per i contatti
@@ -13,9 +11,7 @@ import java.util.Comparator;
  * 
  *
  */
-public class ComparatoreContatti implements Comparator<Contatto>{
-
-    
+public class ComparatoreContatti implements Comparator<Contatto>{  
     /**
     * @brief Compara due contatti per cognome o per nome
     * 
@@ -31,5 +27,4 @@ public class ComparatoreContatti implements Comparator<Contatto>{
         
         return o1.getCognome().compareTo(o2.getCognome());
     }
-    
-}
+ }
