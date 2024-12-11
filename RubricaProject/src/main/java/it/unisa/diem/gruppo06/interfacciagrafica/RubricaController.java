@@ -150,6 +150,8 @@ public class RubricaController implements Initializable{
         assert(contatto!=null);
         rubrica.eliminaContatto(contatto);
         contatti.setAll(rubrica.getLista());
+        table1.setItems(contatti);
+        searchField.setText("");
     }
 
     @FXML

@@ -50,7 +50,7 @@ public class Main extends Application {
      *
      */
     public static void setRoot(String fxml) throws IOException {
-        scene.setRoot(new FXMLLoader(Main.class.getResource(fxml)).load());
+        scene.setRoot(new FXMLLoader(Main.class.getResource(fxml + ".fxml")).load());
     }
 
      /**
