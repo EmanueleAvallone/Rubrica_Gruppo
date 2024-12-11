@@ -55,7 +55,7 @@ public interface InterfacciaRubrica {
      * @return Il contatto trovato, oppure null se non esiste.
      * 
      */
-    public Contatto cercaContatto(Contatto c);
+    public List<Contatto> cercaContatto(String searchText);
 
     /**
      * @brief Ottiene la lista completa dei contatti nella rubrica.
