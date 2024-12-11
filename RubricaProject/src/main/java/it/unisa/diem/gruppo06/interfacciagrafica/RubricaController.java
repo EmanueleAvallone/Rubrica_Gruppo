@@ -182,7 +182,7 @@ public class RubricaController implements Initializable{
    
 
     @FXML
-    private void salvaSuFileBtn(ActionEvent event) {
+    private void salvaSuFileBtn(ActionEvent event) throws IOException {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Scegli un file in cui salvare");
      
