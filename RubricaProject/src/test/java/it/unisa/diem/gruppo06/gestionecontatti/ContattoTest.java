@@ -16,7 +16,7 @@ public class ContattoTest {
     @BeforeEach
     public void setUp() {
         String[] numeri = { "3352637284","3443365728", null};
-        String[] email = {"e1@gmail.com","e2@gmail.com", ""};
+        String[] email = {"e1@gmail.com","e2@gmail.com", null};
         contatto =new Contatto("Emanuele","Barbato",numeri, email);
     }
     
@@ -89,7 +89,7 @@ public class ContattoTest {
     public void testGetEmails() {
         setUp();
         System.out.println("getEmail");
-        String[] expResult = {"e1@gmail.com","e2@gmail.com", ""};
+        String[] expResult = {"e1@gmail.com","e2@gmail.com", null};
         assertArrayEquals(expResult,contatto.getEmails());
     }
     

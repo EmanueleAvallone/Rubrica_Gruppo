@@ -1,15 +1,15 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/UnitTests/JUnit5TestClass.java to edit this template
- */
 package it.unisa.diem.gruppo06.gestionefile;
 
+import it.unisa.diem.gruppo06.gestionecontatti.Contatto;
 import it.unisa.diem.gruppo06.gestionecontatti.InterfacciaRubrica;
+import it.unisa.diem.gruppo06.gestionecontatti.Rubrica;
+import it.unisa.diem.gruppo06.interfacciagrafica.RubricaController;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -18,64 +18,105 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
- *
- * @author Ema
+ * Classe di test per FileManager.
  */
 public class FileManagerTest {
-    
-    private File testFile;
-    
-    public FileManagerTest() {
-    }
-    
-    @BeforeAll
-    public static void setUpClass() {
-    }
-    
-    @AfterAll
-    public static void tearDownClass() {
-    }
+
+    private File tempFile;
     
     @BeforeEach
     public void setUp() throws IOException {
-        testFile = File.createTempFile("TestRubrica", ".txt");
-        try(PrintWriter pw = new PrintWriter(new FileWriter(testFile))){
-            pw.println("Emanuele;Barbato;3352637284,3443365728;email1@gmail.com,email2@gmail.com");
-            pw.println("Emanuele;Avallone;3246731167,3456210900,9123445362;");
-            pw.println("Gregorio;Barberio;;email3@outlook.it,email4@virgilio.it");
-        }    
+        // Creazione di un file temporaneo con dati di esempio
+        tempFile = File.createTempFile("rubricaTest", ".txt");
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(tempFile))) {
+            writer.write("Emanuele;Barbato;3352637284,3443365728;emanuele@gmail.com,email2@gmail.com\n");
+            writer.write("Gregorio;Barberio;3425375609;email3@gmail.com\n");
+        }
     }
-    
+
     @AfterEach
     public void tearDown() {
-        testFile.delete();
+        // Cancellazione del file temporaneo
+        if (tempFile.exists()) {
+            tempFile.delete();
+        }
     }
 
     /**
-     * Test of salvaSuFile method, of class FileManager.
+     * Test del metodo caricaDaFile.
      */
     @Test
-    public void testSalvaSuFile() throws Exception {
-        System.out.println("salvaSuFile");
-        File selectedFile = null;
-        FileManager.salvaSuFile(selectedFile);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of caricaDaFile method, of class FileManager.
-     */
-    @Test
-    public void testCaricaDaFile() throws Exception {
+    public void testCaricaDaFile() throws IOException {
         System.out.println("caricaDaFile");
-        File selectedFile = null;
-        FileManager instance = new FileManager();
-        InterfacciaRubrica expResult = null;
-        InterfacciaRubrica result = instance.caricaDaFile(selectedFile);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        FileManager fileManager = new FileManager();
+
+        InterfacciaRubrica rubrica;
+        rubrica = fileManager.caricaDaFile(tempFile);
+
+        // Verifica che la rubrica non sia ""
+        assertNotNull(rubrica);
+
+        // Verifica che la rubrica contenga i contatti previsti
+        Contatto primoContatto = rubrica.getLista().get(0);
+        assertEquals("Emanuele", primoContatto.getNome());
+        assertEquals("Barbato", primoContatto.getCognome());
+        assertArrayEquals(new String[]{"3352637284", "3443365728", ""}, primoContatto.getNumeriTelefono());
+        assertArrayEquals(new String[]{"emanuele@gmail.com", "email2@gmail.com", ""}, primoContatto.getEmails());
+
+        Contatto secondoContatto = rubrica.getLista().get(1);
+        assertEquals("Gregorio", secondoContatto.getNome());
+        assertEquals("Barberio", secondoContatto.getCognome());
+        assertArrayEquals(new String[]{"3425375609", "", ""}, secondoContatto.getNumeriTelefono());
+        assertArrayEquals(new String[]{"email3@gmail.com", "", ""}, secondoContatto.getEmails());
     }
-    
+
+    /**
+     * Test del metodo salvaSuFile (da implementare in futuro).
+     */
+    @Test
+    public void testSalvaSuFile() throws IOException {
+        System.out.println("salvaSuFile");
+
+        // Creazione di una rubrica di esempio
+        InterfacciaRubrica rubrica = new Rubrica();
+        rubrica.creaContatto(new Contatto("Emanuele", "Barbato", new String[]{"3352637284", "", ""}, new String[]{"emanuele@gmail.com", "", ""}));
+        rubrica.creaContatto(new Contatto("Gregorio", "Barberio", new String[]{"3425375609", "", ""}, new String[]{"gregorio@gmail.com", "", ""}));
+
+        // Creazione di un file temporaneo per il salvataggio
+        File outputFile = File.createTempFile("rubricaOutput", ".txt");
+
+        
+        for(int i=0; i<rubrica.getLista().size(); i++){
+            RubricaController.getRubrica().creaContatto(rubrica.getLista().get(0)); 
+//Passo tutti i contatti della rubrica creata a RubricaController
+        }
+        // Salvataggio della rubrica nel file
+        FileManager.salvaSuFile(outputFile);
+
+        // Verifica che il file sia stato scritto correttamente
+        assertTrue(outputFile.exists());
+        
+        System.out.println(outputFile);
+        
+        FileManager fileManager = new FileManager();
+        InterfacciaRubrica prova = new Rubrica();
+        prova = fileManager.caricaDaFile(outputFile);
+        
+        //Contatto primoContattoProva = prova.getLista().get(0);
+        Contatto primoContattoRubrica = rubrica.getLista().get(0);
+        
+        assertEquals("Emanuele", RubricaController.getRubrica().getLista().get(0).getNome());
+        assertEquals("Barbato", RubricaController.getRubrica().getLista().get(0).getCognome());
+        assertArrayEquals(new String[]{"3352637284", "", ""}, RubricaController.getRubrica().getLista().get(0).getNumeriTelefono());
+        assertArrayEquals(new String[]{"emanuele@gmail.com", "", ""}, RubricaController.getRubrica().getLista().get(0).getEmails());
+
+        // Verifica che il file sia stato scritto correttamente
+        assertTrue(outputFile.exists());
+        System.out.println(outputFile.length());
+        //assertTrue(prova.getLista().isEmpty());
+        assertTrue(outputFile.length()> 0);
+
+        // Pulizia del file temporaneo
+        outputFile.delete();
+    }
 }

@@ -68,6 +68,7 @@ public class FileManager {
 
                 pw.print(c.getEmails()[2]);
                 pw.append("\n");//l'ultimo separatore è sempre \n
+                System.out.println("Ho scritto un contatto\n");
             }
 
 
@@ -113,8 +114,7 @@ public class FileManager {
                     
                     // Crea un nuovo contatto e aggiungilo alla rubrica
                     Contatto contatto = new Contatto(dati[0], dati[1], numeriTelefono, email);
-                    r.creaContatto(contatto); // Aggiungi il contatto alla rubrica
-                
+                    r.creaContatto(contatto); // Aggiungi il contatto alla rubrica                
                 }
             }
         assert(r!=null);
