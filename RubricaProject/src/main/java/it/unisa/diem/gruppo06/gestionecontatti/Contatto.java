@@ -66,6 +66,14 @@ public class Contatto {
     }
     
     /**
+     * @brief Restituisce il vettore dei numeri di telefono del contatto
+     * @return I Numeri di telefono del contatto
+     */
+    public String[] getNumeroTelefono() {
+        return numeriTelefono;
+    }
+    
+    /**
      * @brief Restituisce il primo numero di telefono del contatto
      * @return Il primo Numero di telefono del contatto
      */
@@ -73,22 +81,13 @@ public class Contatto {
         return this.numeriTelefono[0];
     }
     
-    /**
-     * @brief Restituisce il secondo numero di telefono del contatto
-     * @return Il Secondo Numero di telefono del contatto
+     /**
+     * @brief Restituisce il vettore di email del contatto
+     * @return Le email del contatto
      */
     
-    public String getNumeroTelefono2() {
-        return this.numeriTelefono[1];
-    }
-    
-    /**
-     * @brief Restituisce il terzo numero di telefono del contatto
-     * @return Il terzo Numero di telefono del contatto
-     */
-    
-    public String getNumeroTelefono3() {
-        return this.numeriTelefono[2];
+    public String[] getEmail() {
+        return this.email;
     }
     
     /**
