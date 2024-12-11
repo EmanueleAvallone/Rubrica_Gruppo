@@ -5,10 +5,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
-/**
- *
- * @author emanueleavallone
- */
+
 public class ComparatoreContattiTest {
     private Contatto o1;
     private Contatto o2;
