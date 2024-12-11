@@ -56,6 +56,12 @@ public class Main extends Application {
      * @post L'applicazione si avvia visualizzando la scena principale
      */
 
+    public static FXMLLoader setRootAndGetLoader(String fxml) throws IOException {
+        FXMLLoader loader = new FXMLLoader(Main.class.getResource(fxml + ".fxml"));
+        scene.setRoot(loader.load());
+        return loader; // Ritorna il loader per ottenere il controller
+    }
+    
     public static void main(String[] args) {
         
     }
