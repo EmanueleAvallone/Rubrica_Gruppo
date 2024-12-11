@@ -3,6 +3,7 @@ package it.unisa.diem.gruppo06.gestionefile;
 import it.unisa.diem.gruppo06.gestionecontatti.Contatto;
 import it.unisa.diem.gruppo06.gestionecontatti.InterfacciaRubrica;
 import it.unisa.diem.gruppo06.gestionecontatti.Rubrica;
+import it.unisa.diem.gruppo06.interfacciagrafica.RubricaController;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;

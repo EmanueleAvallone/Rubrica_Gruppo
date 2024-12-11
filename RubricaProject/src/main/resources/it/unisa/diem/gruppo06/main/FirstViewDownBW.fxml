@@ -58,7 +58,7 @@
             </MenuButton>
             <HBox layoutX="210.0" layoutY="451.0" prefHeight="27.0" prefWidth="179.0">
                <children>
-                  <Button fx:id="aggiungiBtn" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#salvaRubricaBtn" prefHeight="22.0" prefWidth="35.0" style="-fx-background-color: #f3f3f3;">
+                  <Button fx:id="aggiungiBtn" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#aggiungiContattoBtn" prefHeight="22.0" prefWidth="35.0" style="-fx-background-color: #f3f3f3;">
                      <graphic>
                         <ImageView fitHeight="26.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true" translateY="2.0">
                            <image>
