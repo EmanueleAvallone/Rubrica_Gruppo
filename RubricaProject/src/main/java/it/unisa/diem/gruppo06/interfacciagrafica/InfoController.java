@@ -2,7 +2,6 @@ package it.unisa.diem.gruppo06.interfacciagrafica;
 
 import it.unisa.diem.gruppo06.gestionecontatti.Contatto;
 import it.unisa.diem.gruppo06.gestionecontatti.InterfacciaRubrica;
-import it.unisa.diem.gruppo06.gestionecontatti.Rubrica;
 import it.unisa.diem.gruppo06.main.Main;
 import java.io.IOException;
 import java.net.URL;
@@ -19,7 +18,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 /**
@@ -87,18 +85,22 @@ public class InfoController implements Initializable{
     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-       setBindings();
+       initBindings();
     }
     
     @FXML
-    private void annullaBtn(ActionEvent event) throws IOException {   
+    private void annullaBtn(ActionEvent event) throws IOException {  
+        if(contattoDaModificare!=null){
            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
            alert.setTitle("Annullamento operazione");
            alert.setHeaderText(null);
            alert.setContentText("Sei sicuro di voler annullare l'operazione? Le modifiche fatte andranno perse.");
            Optional<ButtonType> result = alert.showAndWait();
            if(result.get()==ButtonType.OK)
-                Main.setRoot("FirstViewDownBW");  
+                Main.setRoot("FirstViewDownBW"); 
+        }else{
+            Main.setRoot("FirstViewDownBW");
+        }
     }
     
     @FXML
@@ -139,6 +141,7 @@ public class InfoController implements Initializable{
             salva.setDisable(true);
             setFieldContent(c1);
         }else{//caso in cui voglio modificare
+            contattoDaModificare=c1;
             setFieldContent(c1);
         }
     }
@@ -156,8 +159,7 @@ public class InfoController implements Initializable{
     }
     
     
-    private void setFieldContent(Contatto c){
-        
+    private void setFieldContent(Contatto c){      
         nomeField.setText(c.getNome());
         cognomeField.setText(c.getCognome());
         numeroField1.setText(c.getNumeriTelefono()[0]);  
@@ -165,13 +167,11 @@ public class InfoController implements Initializable{
         numeroField3.setText(c.getNumeriTelefono()[2]);
         emailField1.setText(c.getEmails()[0]); 
         emailField2.setText(c.getEmails()[1]);     
-        emailField3.setText(c.getEmails()[2]);
-        
-        contattoDaModificare=c;
+        emailField3.setText(c.getEmails()[2]);    
     }
     
     
-    private void setBindings(){
+    private void initBindings(){
         salva.disableProperty().bind(Bindings.and(nomeField.textProperty().isEmpty(), cognomeField.textProperty().isEmpty()));
         numeroField2.visibleProperty().bind((Bindings.isNotEmpty(numeroField1.textProperty())));
         numero2.visibleProperty().bind((Bindings.isNotEmpty(numeroField1.textProperty())));
