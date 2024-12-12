@@ -146,12 +146,19 @@ public class RubricaController implements Initializable{
 
     @FXML
     private void eliminaContattoBtn(ActionEvent event) {
-        Contatto contatto = table1.getSelectionModel().getSelectedItem();//preleviamo l'elemento selezionato
-        assert(contatto!=null);
-        rubrica.eliminaContatto(contatto);
-        contatti.setAll(rubrica.getLista());
-        table1.setItems(contatti);
-        searchField.setText("");
+        Contatto c = table1.getSelectionModel().getSelectedItem();//preleviamo l'elemento selezionato
+        if(c!=null){
+            rubrica.eliminaContatto(c);
+            contatti.setAll(rubrica.getLista());
+            table1.setItems(contatti);
+            searchField.setText("");
+        } else {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Warning");
+            alert.setHeaderText("Nessun contatto selezionato!");
+            alert.setContentText("Selezionare il contatto.");
+            alert.showAndWait();
+        }
     }
 
     @FXML
@@ -186,7 +193,7 @@ public class RubricaController implements Initializable{
     @FXML
     private void salvaSuFileBtn(ActionEvent event) throws IOException {
         FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Scegli un file in cui salvare");
+        fileChooser.setTitle("Scegliere il file in cui esportare i contatti");
      
         Window window = (table1.getParent().getScene().getWindow());
         File selectedFile = fileChooser.showSaveDialog(window);
@@ -197,7 +204,7 @@ public class RubricaController implements Initializable{
     @FXML
     private void caricaDaFileBtn(ActionEvent event) throws IOException {
         FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Apri un file");
+        fileChooser.setTitle("Scegliere il file da cui importare i contatti");
 
         Window window = table1.getScene().getWindow();
         

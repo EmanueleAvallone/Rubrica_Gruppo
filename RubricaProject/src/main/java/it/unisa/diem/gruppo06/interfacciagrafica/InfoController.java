@@ -7,13 +7,16 @@ import it.unisa.diem.gruppo06.main.Main;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.beans.binding.Bindings;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 /**
@@ -53,6 +56,18 @@ public class InfoController implements Initializable{
     private VBox textContainer;
 
     private Contatto contattoDaModificare = null;
+    @FXML
+    private Label numero1;
+    @FXML
+    private Label numero2;
+    @FXML
+    private Label numero3;
+    @FXML
+    private Label email3;
+    @FXML
+    private Label email1;
+    @FXML
+    private Label email2;
     
     
    
@@ -70,6 +85,15 @@ public class InfoController implements Initializable{
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        salva.disableProperty().bind(Bindings.and(nomeField.textProperty().isEmpty(), cognomeField.textProperty().isEmpty()));
+        numeroField2.visibleProperty().bind((Bindings.isNotEmpty(numeroField1.textProperty())));
+        numero2.visibleProperty().bind((Bindings.isNotEmpty(numeroField1.textProperty())));
+        numeroField3.visibleProperty().bind((Bindings.isNotEmpty(numeroField2.textProperty())));
+        numero3.visibleProperty().bind((Bindings.isNotEmpty(numeroField2.textProperty())));
+        emailField2.visibleProperty().bind((Bindings.isNotEmpty(emailField1.textProperty())));
+        email2.visibleProperty().bind((Bindings.isNotEmpty(emailField1.textProperty())));
+        emailField3.visibleProperty().bind((Bindings.isNotEmpty(emailField2.textProperty())));
+        email3.visibleProperty().bind((Bindings.isNotEmpty(emailField2.textProperty())));
     }
     
     @FXML
