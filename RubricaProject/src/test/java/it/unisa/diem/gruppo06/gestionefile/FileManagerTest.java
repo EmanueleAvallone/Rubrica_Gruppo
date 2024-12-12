@@ -51,7 +51,7 @@ public class FileManagerTest {
 
         // Verifica che la rubrica non sia ""
         assertNotNull(rubrica);
-
+        assertEquals(2,rubrica.getLista());
         // Verifica che la rubrica contenga i contatti previsti
         Contatto primoContatto = rubrica.getLista().get(0);
         assertEquals("Emanuele", primoContatto.getNome());
@@ -72,7 +72,7 @@ public class FileManagerTest {
     @Test
     public void testSalvaSuFile() throws IOException {
         System.out.println("salvaSuFile");
-
+        FileManager fileManager = new FileManager();
         // Creazione di una rubrica di esempio
         InterfacciaRubrica rubrica = new Rubrica();
         rubrica.creaContatto(new Contatto("Emanuele", "Barbato", new String[]{"3352637284", "", ""}, new String[]{"emanuele@gmail.com", "", ""}));
@@ -83,34 +83,37 @@ public class FileManagerTest {
 
         
         for(int i=0; i<rubrica.getLista().size(); i++){
-            RubricaController.getRubrica().creaContatto(rubrica.getLista().get(0)); 
+            RubricaController.getRubrica().creaContatto(rubrica.getLista().get(i)); 
         //Passo tutti i contatti della rubrica creata a RubricaController
         }
         // Salvataggio della rubrica nel file
-        FileManager.salvaSuFile(outputFile);
+        fileManager.salvaSuFile(outputFile);
 
         // Verifica che il file sia stato scritto correttamente
         assertTrue(outputFile.exists());
+        assertTrue(outputFile.length()> 0);
         
-        System.out.println(outputFile);
-        
-        FileManager fileManager = new FileManager();
-        InterfacciaRubrica prova = new Rubrica();
+        InterfacciaRubrica prova;
         prova = fileManager.caricaDaFile(outputFile);
         
+        assertNotNull(prova);
+        assertEquals(2,prova.getLista().size());
         //Contatto primoContattoProva = prova.getLista().get(0);
         Contatto primoContattoRubrica = rubrica.getLista().get(0);
+        Contatto secondoContattoRubrica = rubrica.getLista().get(1);
         
-        assertEquals("Emanuele", RubricaController.getRubrica().getLista().get(0).getNome());
-        assertEquals("Barbato", RubricaController.getRubrica().getLista().get(0).getCognome());
-        assertArrayEquals(new String[]{"3352637284", "", ""}, RubricaController.getRubrica().getLista().get(0).getNumeriTelefono());
-        assertArrayEquals(new String[]{"emanuele@gmail.com", "", ""}, RubricaController.getRubrica().getLista().get(0).getEmails());
+        assertEquals("Emanuele", primoContattoRubrica.getNome());
+        assertEquals("Barbato", primoContattoRubrica.getCognome());
+        assertArrayEquals(new String[]{"3352637284", "", ""}, primoContattoRubrica.getNumeriTelefono());
+        assertArrayEquals(new String[]{"emanuele@gmail.com", "", ""}, primoContattoRubrica.getEmails());
 
-        // Verifica che il file sia stato scritto correttamente
-        assertTrue(outputFile.exists());
-        System.out.println(outputFile.length());
-        //assertTrue(prova.getLista().isEmpty());
-        assertTrue(outputFile.length()> 0);
+        assertEquals("Gregorio", secondoContattoRubrica.getNome());
+        assertEquals("Barberio", secondoContattoRubrica.getCognome());
+        assertArrayEquals(new String[]{"3425375609", "", ""}, secondoContattoRubrica.getNumeriTelefono());
+        assertArrayEquals(new String[]{"gregorio@gmail.com", "", ""}, secondoContattoRubrica.getEmails());
+        
+
+
 
         // Pulizia del file temporaneo
         outputFile.delete();

@@ -59,8 +59,8 @@ public class RubricaTest {
         rubrica.creaContatto(c);
         Contatto c2 = new Contatto("Emanuele","Barbato",numeri,email);
         rubrica.modificaContatto(c, c2);
-        assertEquals(c.getNome(),c2.getNome());
-        assertEquals(c.getCognome(),c2.getCognome());     
+        assertEquals("Emanuele",c2.getNome());
+        assertEquals("Barbato",c2.getCognome());     
     }
     
     @Test

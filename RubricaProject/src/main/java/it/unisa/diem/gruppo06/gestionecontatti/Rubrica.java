@@ -37,6 +37,7 @@ public class Rubrica implements InterfacciaRubrica {
     @Override
     public void creaContatto(Contatto c) {
         contatti.add(c);
+        contatti.sort(new ComparatoreContatti());
     }
     
     
@@ -54,6 +55,7 @@ public class Rubrica implements InterfacciaRubrica {
             contatti.get(index).setNumeriTelefono(c1.getNumeriTelefono());
             contatti.get(index).setEmails(c1.getEmails()); 
         }
+        contatti.sort(new ComparatoreContatti());
     }
     
     
@@ -77,11 +79,11 @@ public class Rubrica implements InterfacciaRubrica {
       searchText=searchText.toLowerCase();
       List<Contatto> filteredContacts = new ArrayList<>();
         for (Contatto contact : this.getLista()) {
-        if (contact.getNome().toLowerCase().contains(searchText) || 
-            contact.getCognome().toLowerCase().contains(searchText)) {
-            filteredContacts.add(contact); // Aggiungi i contatti che corrispondono alla ricerca, ovvero se nome o cognome contengono la stringa
+            if (contact.getNome().toLowerCase().contains(searchText) || 
+                contact.getCognome().toLowerCase().contains(searchText)) {
+                filteredContacts.add(contact); // Aggiungi i contatti che corrispondono alla ricerca, ovvero se nome o cognome contengono la stringa
+            }
         }
-    }
         return filteredContacts;
        
     }

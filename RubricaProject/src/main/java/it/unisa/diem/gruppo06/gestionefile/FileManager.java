@@ -34,10 +34,9 @@ public class FileManager {
     * La rubrica da scrivere sul file è diversa da null
     * @post
     * La rubrica è stata scritta correttamente sul fie scelto
-    * 
-    * 
+    *  
     */
-    public static void salvaSuFile(File selectedFile) throws IOException {
+    public void salvaSuFile(File selectedFile) throws IOException {
         InterfacciaRubrica r = RubricaController.getRubrica(); 
         assert(r!=null);
         try(PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter(selectedFile)))){
