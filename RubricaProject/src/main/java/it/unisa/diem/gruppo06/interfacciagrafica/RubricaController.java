@@ -17,6 +17,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableColumn;
@@ -136,11 +137,9 @@ public class RubricaController implements Initializable{
             InfoController info = loader.getController();
             info.setField(c,false);//imposto i field solo per la visualizzazione
         }else{
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("Warning");
-            alert.setHeaderText("Nessun contatto selezionato!");
-            alert.setContentText("Selezionare il contatto.");
-            alert.showAndWait();
+            this.createAndShowAlert(AlertType.WARNING, "Warning", 
+                         "Nessun contatto selezionato!", 
+                         "Selezionare il contatto di cui si vogliono visualizzare i dettagli.");
         }
     }
 
@@ -153,11 +152,9 @@ public class RubricaController implements Initializable{
             table1.setItems(contatti);
             searchField.setText("");
         } else {
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("Warning");
-            alert.setHeaderText("Nessun contatto selezionato!");
-            alert.setContentText("Selezionare il contatto.");
-            alert.showAndWait();
+            this.createAndShowAlert(AlertType.WARNING, "Warning", 
+                         "Nessun contatto selezionato!", 
+                         "Selezionare il contatto da eliminare.");
         }
     }
 
@@ -169,11 +166,9 @@ public class RubricaController implements Initializable{
             InfoController info = loader.getController();
             info.setField(c,true);
         }else{
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("Warning");
-            alert.setHeaderText("Nessun contatto selezionato!");
-            alert.setContentText("Selezionare il contatto.");
-            alert.showAndWait();
+          this.createAndShowAlert(AlertType.WARNING, "Warning", 
+                         "Nessun contatto selezionato!", 
+                         "Selezionare il contatto da modificare.");
         }
     }
     
@@ -210,8 +205,8 @@ public class RubricaController implements Initializable{
         
         File selectedFile = fileChooser.showOpenDialog(window);
         if(selectedFile!=null){
-        rubrica= fileManager.caricaDaFile(selectedFile);
-        contatti.setAll(rubrica.getLista());
+            rubrica= fileManager.caricaDaFile(selectedFile);
+            contatti.setAll(rubrica.getLista());
         }
     }
 
@@ -219,5 +214,13 @@ public class RubricaController implements Initializable{
     private void aggiungiContattoBtn(ActionEvent event) throws IOException {
         contatti.setAll(rubrica.getLista());
         Main.setRoot("SecondaView");
+    }
+    
+    private void createAndShowAlert(AlertType type, String title, String headerText, String contentText){
+        Alert alert = new Alert(type);
+        alert.setTitle(title);
+        alert.setHeaderText(headerText);
+        alert.setContentText(contentText);
+        alert.showAndWait();    
     }
 }

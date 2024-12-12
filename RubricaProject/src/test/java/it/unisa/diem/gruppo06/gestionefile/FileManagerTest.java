@@ -19,9 +19,11 @@ import static org.junit.jupiter.api.Assertions.*;
 public class FileManagerTest {
 
     private File tempFile;
+    private FileManager fileManager;
     
     @BeforeEach
     public void setUp() throws IOException {
+        fileManager = new FileManager();
         // Creazione di un file temporaneo con dati di esempio
         tempFile = File.createTempFile("rubricaTest", ".txt");
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(tempFile))) {
@@ -33,9 +35,8 @@ public class FileManagerTest {
     @AfterEach
     public void tearDown() {
         // Cancellazione del file temporaneo
-        if (tempFile.exists()) {
-            tempFile.delete();
-        }
+        if (tempFile.exists()) 
+          tempFile.delete();      
     }
 
     /**
@@ -44,14 +45,13 @@ public class FileManagerTest {
     @Test
     public void testCaricaDaFile() throws IOException {
         System.out.println("caricaDaFile");
-        FileManager fileManager = new FileManager();
 
         InterfacciaRubrica rubrica;
         rubrica = fileManager.caricaDaFile(tempFile);
 
-        // Verifica che la rubrica non sia ""
+        // Verifica che la rubrica non sia null
         assertNotNull(rubrica);
-        assertEquals(2,rubrica.getLista());
+        assertEquals(2,rubrica.getLista().size());
         // Verifica che la rubrica contenga i contatti previsti
         Contatto primoContatto = rubrica.getLista().get(0);
         assertEquals("Emanuele", primoContatto.getNome());
@@ -67,7 +67,7 @@ public class FileManagerTest {
     }
 
     /**
-     * Test del metodo salvaSuFile (da implementare in futuro).
+     * Test del metodo salvaSuFile.
      */
     @Test
     public void testSalvaSuFile() throws IOException {
@@ -98,7 +98,7 @@ public class FileManagerTest {
         
         assertNotNull(prova);
         assertEquals(2,prova.getLista().size());
-        //Contatto primoContattoProva = prova.getLista().get(0);
+
         Contatto primoContattoRubrica = rubrica.getLista().get(0);
         Contatto secondoContattoRubrica = rubrica.getLista().get(1);
         
@@ -112,8 +112,6 @@ public class FileManagerTest {
         assertArrayEquals(new String[]{"3425375609", "", ""}, secondoContattoRubrica.getNumeriTelefono());
         assertArrayEquals(new String[]{"gregorio@gmail.com", "", ""}, secondoContattoRubrica.getEmails());
         
-
-
 
         // Pulizia del file temporaneo
         outputFile.delete();

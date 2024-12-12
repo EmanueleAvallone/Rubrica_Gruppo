@@ -18,9 +18,9 @@ public class Rubrica implements InterfacciaRubrica {
     * @brief Lista dei contatti presenti in Rubrica
     * 
     * Ogni contatto è un'istanza della classe 'Contatto'
-    */
-    
+    */ 
     private List<Contatto> contatti;
+    
     
     /**
     * @brief Costruttore
@@ -72,8 +72,7 @@ public class Rubrica implements InterfacciaRubrica {
     /**
     * Per ulteriori dettagli, vedere il corrispondente metodo in 
     * \ref InterfacciaRubrica::cercaContatto(Contatto c) "InterfacciaRubrica.cercaContatto".
-    */
-    
+    */  
     @Override
     public List<Contatto> cercaContatto(String searchText) {
       searchText=searchText.toLowerCase();

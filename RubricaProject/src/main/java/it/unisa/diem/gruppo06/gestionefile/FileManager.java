@@ -27,13 +27,11 @@ public class FileManager {
     /**
     * @brief Scrive su un file la lista di contatti
     * 
-    * @param[in] filename Il nome del file sul quale si vuole scrivere
-    * @pre
-    * Il file passato come input esiste
+    * @param[in] selectedFile Il file sul quale si vuole scrivere
     * @pre
     * La rubrica da scrivere sul file è diversa da null
     * @post
-    * La rubrica è stata scritta correttamente sul fie scelto
+    * Il file sul quale è avvenuta la scrittura non è vuoto
     *  
     */
     public void salvaSuFile(File selectedFile) throws IOException {
@@ -71,6 +69,7 @@ public class FileManager {
 
 
         }
+        assert(selectedFile.length()>0);
     }
 
     /**
@@ -83,7 +82,6 @@ public class FileManager {
     * Il file passato come input esiste
     * @post
     * La rubrica restituita è diversa da null
-    * 
     * 
     */
     public InterfacciaRubrica caricaDaFile(File selectedFile) throws FileNotFoundException, IOException {

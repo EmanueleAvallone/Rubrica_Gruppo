@@ -25,6 +25,7 @@ public interface InterfacciaRubrica {
      */
     public void creaContatto(Contatto c);
 
+    
      /**
      * @brief Modifica un contatto nella rubrica.
      * 
@@ -36,6 +37,8 @@ public interface InterfacciaRubrica {
      */
     public void modificaContatto(Contatto c,Contatto c1);
     
+    
+    
      /**
      * @brief Elimina un contatto nella rubrica.
      * 
@@ -45,22 +48,26 @@ public interface InterfacciaRubrica {
      */
     public void eliminaContatto(Contatto c);
  
+    
     /**
-     * @brief Cerca un contatto nella rubrica.
+     * @brief Ricerca di un contatto nella rubrica.
      * 
-     * Cerca un contatto all'interno della rubrica.
+     * Cerca uno o più contatti all'interno della lista basandosi su
+     * una sottostringa del cognome o del nome.
      * 
-     * @param[in] c contatto da cercare.
+     * @param[in] searchText Sottostringa del cognome o del nome del contatto da cercare.
      * 
-     * @return Il contatto trovato, oppure null se non esiste.
+     * @return Una lista dei contatti che contengono nel loro nome o cognome la sottostringa
+     * passata come parametro.
      * 
      */
     public List<Contatto> cercaContatto(String searchText);
 
+    
     /**
-     * @brief Ottiene la lista completa dei contatti nella rubrica.
+     * @brief Getter per la lista che colleziona i contatti presenti in rubrica.
      * 
-     * Restituisce una lista contenente tutti i contatti  presenti nella rubrica.
+     * Metodo che restituisce la lista contenente tutti i contatti presenti nella rubrica.
      * 
      * @return Lista dei contatti.
      */

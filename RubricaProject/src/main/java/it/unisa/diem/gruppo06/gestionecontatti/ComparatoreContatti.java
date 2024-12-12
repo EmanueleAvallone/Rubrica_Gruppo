@@ -9,9 +9,11 @@ import java.util.Comparator;
  * al fine di comparare due contatti fra di loro, garantendo 
  * un ordinamento per cognome o, a parità di questo, per nome
  * 
- *
  */
+
 public class ComparatoreContatti implements Comparator<Contatto>{  
+    
+    
     /**
     * @brief Compara due contatti per cognome o per nome
     * 
@@ -27,4 +29,5 @@ public class ComparatoreContatti implements Comparator<Contatto>{
         
         return o1.getCognome().compareTo(o2.getCognome());
     }
+    
  }

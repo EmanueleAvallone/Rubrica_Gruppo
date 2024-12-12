@@ -6,6 +6,7 @@ import it.unisa.diem.gruppo06.gestionecontatti.Rubrica;
 import it.unisa.diem.gruppo06.main.Main;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.beans.binding.Bindings;
 import javafx.event.ActionEvent;
@@ -13,7 +14,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
@@ -76,31 +79,28 @@ public class InfoController implements Initializable{
      /**
     * @brief Inizializza il controller
     * 
-    * Il metodo inizializza tutti gli attributi del controller
+    * Il metodo inizializza i bindigns tra i pulsanti e i TextField.
     * 
     * @param[in] url Percorso del file FXML associato al controller
     * @param[in] rb Collezione di risorse localizzate per l'applicazione
     * 
     */
-    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        salva.disableProperty().bind(Bindings.and(nomeField.textProperty().isEmpty(), cognomeField.textProperty().isEmpty()));
-        numeroField2.visibleProperty().bind((Bindings.isNotEmpty(numeroField1.textProperty())));
-        numero2.visibleProperty().bind((Bindings.isNotEmpty(numeroField1.textProperty())));
-        numeroField3.visibleProperty().bind((Bindings.isNotEmpty(numeroField2.textProperty())));
-        numero3.visibleProperty().bind((Bindings.isNotEmpty(numeroField2.textProperty())));
-        emailField2.visibleProperty().bind((Bindings.isNotEmpty(emailField1.textProperty())));
-        email2.visibleProperty().bind((Bindings.isNotEmpty(emailField1.textProperty())));
-        emailField3.visibleProperty().bind((Bindings.isNotEmpty(emailField2.textProperty())));
-        email3.visibleProperty().bind((Bindings.isNotEmpty(emailField2.textProperty())));
+       setBindings();
     }
     
     @FXML
-    private void annullaBtn(ActionEvent event) throws IOException {
-        Main.setRoot("FirstViewDownBW");
+    private void annullaBtn(ActionEvent event) throws IOException {   
+           Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+           alert.setTitle("Annullamento operazione");
+           alert.setHeaderText(null);
+           alert.setContentText("Sei sicuro di voler annullare l'operazione? Le modifiche fatte andranno perse.");
+           Optional<ButtonType> result = alert.showAndWait();
+           if(result.get()==ButtonType.OK)
+                Main.setRoot("FirstViewDownBW");  
     }
-
+    
     @FXML
     private void salvaInfoBtn(ActionEvent event) throws IOException {
         InterfacciaRubrica r;
@@ -129,17 +129,20 @@ public class InfoController implements Initializable{
         Main.setRoot("FirstViewDownBW");
     }
     
+    
     protected void setField(Contatto c1,boolean editable){
         assert c1 != null : "La variabile c non deve essere null!";
         
         if(!editable){//caso di visualizzazione info
-        disableAllTextFields(textContainer);
-        salva.setDisable(true);
-        setFieldContent(c1);
+            disableAllTextFields(textContainer);
+            salva.disableProperty().unbind();
+            salva.setDisable(true);
+            setFieldContent(c1);
         }else{//caso in cui voglio modificare
             setFieldContent(c1);
         }
     }
+    
     
     private void disableAllTextFields(Parent parent) {
         for (Node node : parent.getChildrenUnmodifiable()) {
@@ -152,26 +155,32 @@ public class InfoController implements Initializable{
         }
     }
     
-    //metodo per popolare i textfield nella seconda scena
-    public void setFieldContent(Contatto c){
+    
+    private void setFieldContent(Contatto c){
         
         nomeField.setText(c.getNome());
-
         cognomeField.setText(c.getCognome());
-
-        numeroField1.setText(c.getNumeriTelefono()[0]);
-    
+        numeroField1.setText(c.getNumeriTelefono()[0]);  
         numeroField2.setText(c.getNumeriTelefono()[1]);
-     
         numeroField3.setText(c.getNumeriTelefono()[2]);
-    
-        emailField1.setText(c.getEmails()[0]);
-       
-        emailField2.setText(c.getEmails()[1]);
-        
+        emailField1.setText(c.getEmails()[0]); 
+        emailField2.setText(c.getEmails()[1]);     
         emailField3.setText(c.getEmails()[2]);
+        
         contattoDaModificare=c;
     }
     
+    
+    private void setBindings(){
+        salva.disableProperty().bind(Bindings.and(nomeField.textProperty().isEmpty(), cognomeField.textProperty().isEmpty()));
+        numeroField2.visibleProperty().bind((Bindings.isNotEmpty(numeroField1.textProperty())));
+        numero2.visibleProperty().bind((Bindings.isNotEmpty(numeroField1.textProperty())));
+        numeroField3.visibleProperty().bind((Bindings.isNotEmpty(numeroField2.textProperty())));
+        numero3.visibleProperty().bind((Bindings.isNotEmpty(numeroField2.textProperty())));
+        emailField2.visibleProperty().bind((Bindings.isNotEmpty(emailField1.textProperty())));
+        email2.visibleProperty().bind((Bindings.isNotEmpty(emailField1.textProperty())));
+        emailField3.visibleProperty().bind((Bindings.isNotEmpty(emailField2.textProperty())));
+        email3.visibleProperty().bind((Bindings.isNotEmpty(emailField2.textProperty())));
+    }
    
 }

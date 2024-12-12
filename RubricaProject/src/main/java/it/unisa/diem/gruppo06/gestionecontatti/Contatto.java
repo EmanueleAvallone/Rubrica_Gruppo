@@ -32,7 +32,6 @@ public class Contatto {
      * @param[in] numeriTelofono Numeri di Telefono del contatto
      * @param[in] email Indirizzi  E-mail del contatto
      */
-    
     public Contatto(String nome, String cognome, String[] numeriTelefono, String[] email) {
        
         this.nome=nome;
@@ -52,7 +51,6 @@ public class Contatto {
      * @brief Restituisce il nome del contatto
      * @return Il Nome del contatto
      */
-    
     public String getNome() {
         return this.nome;
     }
@@ -61,7 +59,6 @@ public class Contatto {
      * @brief Restituisce il cognome del contatto
      * @return Il Cognome del contatto
      */
-    
     public String getCognome() {
         return this.cognome;
     }
@@ -85,8 +82,7 @@ public class Contatto {
      /**
      * @brief Restituisce il vettore di email del contatto
      * @return Le email del contatto
-     */
-    
+     */   
     public String[] getEmails() {
         return this.email;
     }
@@ -95,7 +91,6 @@ public class Contatto {
      * @brief Restituisce la prima email del contatto
      * @return La Prima email del contatto
      */
-    
     public String getEmail1() {
         return this.email[0];
     }
@@ -106,7 +101,6 @@ public class Contatto {
      * @param[in] nome Nome da assegnare al contatto 
      * 
      */
-    
     public void setNome(String nome) {
         this.nome=nome;
     }
@@ -116,7 +110,6 @@ public class Contatto {
      * @param[in] cognome Cognome da assegnare al contatto
      * 
      */
-    
     public void setCognome(String cognome) {
         this.cognome=cognome;
     }
@@ -126,7 +119,6 @@ public class Contatto {
      * @param[in] numeriTelefono Array di Numeri di telefono da assegnare al contatto
      * 
      */
-    
     public void setNumeriTelefono(String[] numeriTelefono) {
         this.numeriTelefono=numeriTelefono;
     }
@@ -136,7 +128,6 @@ public class Contatto {
      * @param[in] email Array di indirizzi E-mail da assegnare al contatto
      * 
      */
-    
     public void setEmails(String[] email) {
         this.email=email;
     }
