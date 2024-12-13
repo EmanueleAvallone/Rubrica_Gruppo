@@ -112,7 +112,18 @@ public class InfoController implements Initializable{
         numeri[0]=numeroField1.getText();
         numeri[1]=numeroField2.getText();
         numeri[2]=numeroField3.getText();
-        
+        for(String numero : numeri) {
+            if (!numero.matches("\\d*")) { // Controlla che siano solo numeri
+                // Mostra un messaggio di errore o lancia un'eccezione
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Errore");
+                alert.setHeaderText("Input non valido");
+                alert.setContentText("I campi del numero devono contenere solo cifre.");
+                alert.showAndWait();
+                return; // Interrompe l'esecuzione se c'è un errore
+            }
+    }
+    
         String[] emails = new String[3];
         emails[0]=emailField1.getText();
         emails[1]=emailField2.getText();
