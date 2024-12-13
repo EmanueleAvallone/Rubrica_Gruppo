@@ -40,9 +40,10 @@ public class RubricaTest {
         System.out.println("creaContatto");
         String[] numeri = { "3352637284","3443365728", null};
         String[] email = {"e1@gmail.com","e2@gmail.com", null};
+        
         Contatto c = new Contatto("Gregorio","Barberio",numeri,email);
         rubrica.creaContatto(c);
-        // TODO review the generated test code and remove the default call to fail.
+        
         assertFalse(rubrica.getLista().isEmpty());
         assertTrue(rubrica.getLista().contains(c));
     }
@@ -55,10 +56,12 @@ public class RubricaTest {
     public void testModificaContatto1() {
         String[] numeri = { "3352637284","3443365728", null};
         String[] email = {"e1@gmail.com","e2@gmail.com", null};
+        
         Contatto c = new Contatto("Gregorio","Barberio",numeri,email);
         rubrica.creaContatto(c);
         Contatto c2 = new Contatto("Emanuele","Barbato",numeri,email);
         rubrica.modificaContatto(c, c2);
+        
         assertEquals("Emanuele",c2.getNome());
         assertEquals("Barbato",c2.getCognome());     
     }
@@ -68,10 +71,12 @@ public class RubricaTest {
         String[] numeri = { "3352637284","3443365728", null};
         String[] email = {"e1@gmail.com","e2@gmail.com", null};
         String[] numeri2 = {"3381456789","3281247655","3991245678"};
+        
         Contatto c = new Contatto("Gregorio","Barberio",numeri,email);
         rubrica.creaContatto(c);
         Contatto c3 = new Contatto("Emanuele","Barbato",numeri2,email);
         rubrica.modificaContatto(c, c3);
+        
         assertArrayEquals(numeri2,c.getNumeriTelefono());
     }
     
@@ -80,10 +85,12 @@ public class RubricaTest {
         String[] numeri = { "3352637284","3443365728", null};
         String[] email = {"e1@gmail.com","e2@gmail.com", null};
         String[] email2 = {"b2@gmail.com","e6@libero.it", "f3@gmail.com"};
+        
         Contatto c = new Contatto("Gregorio","Barberio",numeri,email);
         rubrica.creaContatto(c);
         Contatto c4 = new Contatto("Emanuele","Barbato",numeri,email2);
         rubrica.modificaContatto(c, c4);
+        
         assertArrayEquals(email2,c4.getEmails());
     }
     
@@ -94,10 +101,11 @@ public class RubricaTest {
     public void testEliminaContatto() {
         String[] numeri = { "3352637284","3443365728", null};
         String[] email = {"e1@gmail.com","e2@gmail.com", null};
+        
         Contatto c = new Contatto("Gregorio","Barberio",numeri,email);
         rubrica.creaContatto(c);
         rubrica.eliminaContatto(c);
-        // TODO review the generated test code and remove the default call to fail.
+        
         assertTrue(rubrica.getLista().isEmpty());
     }
 
@@ -111,9 +119,12 @@ public class RubricaTest {
         String substring="Greg";
         String[] numeri = { "3352637284","3443365728", null};
         String[] email = {"e1@gmail.com","e2@gmail.com", null};
+        
         Contatto c1 = new Contatto("Gregorio","Barberio",numeri,email);
         rubrica.creaContatto(c1);
+        
         List<Contatto> risultati = rubrica.cercaContatto(substring);
+        
         assertFalse(risultati.isEmpty());
         assertEquals("Gregorio", risultati.get(0).getNome());
         
@@ -125,8 +136,10 @@ public class RubricaTest {
         String substring="barber";
         String[] numeri = { "3352637284","3443365728", null};
         String[] email = {"e1@gmail.com","e2@gmail.com", null};
+        
         Contatto c1 = new Contatto("Gregorio","Barberio",numeri,email);
         rubrica.creaContatto(c1);
+        
         List<Contatto> risultati = rubrica.cercaContatto(substring);
         assertFalse(risultati.isEmpty());
         assertEquals("Barberio", risultati.get(0).getCognome());       
@@ -138,9 +151,11 @@ public class RubricaTest {
         String substring="";
         String[] numeri = { "3352637284","3443365728", null};
         String[] email = {"e1@gmail.com","e2@gmail.com", null};
-        Contatto c1 = new Contatto("Gregorio","Barberio",numeri,email);
+        
+        Contatto c1 = new Contatto("Gregorio","Barberio",numeri,email);       
         rubrica.creaContatto(c1);
         List<Contatto> risultati = rubrica.cercaContatto(substring);
+        
         assertFalse(risultati.isEmpty());
         assertEquals(rubrica.getLista(), risultati);       
     }
@@ -151,9 +166,12 @@ public class RubricaTest {
         String substring="nonpresente";
         String[] numeri = { "3352637284","3443365728", null};
         String[] email = {"e1@gmail.com","e2@gmail.com", null};
+        
         Contatto c1 = new Contatto("Gregorio","Barberio",numeri,email);
         rubrica.creaContatto(c1);
+        
         List<Contatto> risultati = rubrica.cercaContatto(substring);
+        
         assertTrue(risultati.isEmpty());
     }
     
@@ -167,9 +185,11 @@ public class RubricaTest {
         System.out.println("getLista");
         String[] numeri = { "3352637284","3443365728", null};
         String[] email = {"e1@gmail.com","e2@gmail.com", null};
+        
         Contatto c = new Contatto("Gregorio","Barberio",numeri,email);
         List<Contatto> temp = List.of(c);
         rubrica.creaContatto(c);
+        
         assertEquals(temp,rubrica.getLista());
     }
     

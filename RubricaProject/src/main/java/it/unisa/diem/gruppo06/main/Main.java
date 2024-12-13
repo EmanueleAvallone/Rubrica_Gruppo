@@ -35,7 +35,8 @@ public class Main extends Application {
         scene = new Scene(new FXMLLoader(Main.class.getResource("FirstViewDownBW.fxml")).load(), 598, 482);
         stage.setTitle("Rubrica");
         stage.setScene(scene);
-        stage.show();
+        stage.setResizable(false);
+        stage.show();  
     }
 
    
