@@ -43,7 +43,7 @@
                   <InnerShadow />
                </effect>
             </TableView>
-            <TextField fx:id="searchField" layoutX="183.0" layoutY="8.0" prefHeight="27.0" prefWidth="231.0" promptText="Ricerca contatto..." style="-fx-background-color: #d2d2d2;" AnchorPane.bottomAnchor="448.0" AnchorPane.leftAnchor="183.0" AnchorPane.rightAnchor="184.0" AnchorPane.topAnchor="8.0">
+            <TextField fx:id="searchField" layoutX="155.0" layoutY="6.0" maxWidth="294.0" minWidth="180.0" prefHeight="21.0" prefWidth="294.0" promptText="Ricerca contatto..." style="-fx-background-color: #d2d2d2;">
                <cursor>
                   <Cursor fx:constant="TEXT" />
                </cursor></TextField>
