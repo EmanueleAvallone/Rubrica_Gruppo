@@ -174,13 +174,13 @@ public class InfoController implements Initializable{
     private void initBindings(){
         salva.disableProperty().bind(Bindings.and(nomeField.textProperty().isEmpty(), cognomeField.textProperty().isEmpty()));
         numeroField2.visibleProperty().bind((Bindings.isNotEmpty(numeroField1.textProperty())));
-        numero2.visibleProperty().bind((Bindings.isNotEmpty(numeroField1.textProperty())));
-        numeroField3.visibleProperty().bind((Bindings.isNotEmpty(numeroField2.textProperty())));
-        numero3.visibleProperty().bind((Bindings.isNotEmpty(numeroField2.textProperty())));
+        numero2.visibleProperty().bind(Bindings.and(numeroField2.textProperty().isNotEmpty(), numeroField1.textProperty().isNotEmpty()));
+        numeroField3.visibleProperty().bind(Bindings.and(numeroField2.textProperty().isNotEmpty(), numeroField1.textProperty().isNotEmpty()));
+        numero3.visibleProperty().bind((Bindings.and(numero2.visibleProperty(), numeroField3.textProperty().isNotEmpty())));
         emailField2.visibleProperty().bind((Bindings.isNotEmpty(emailField1.textProperty())));
-        email2.visibleProperty().bind((Bindings.isNotEmpty(emailField1.textProperty())));
-        emailField3.visibleProperty().bind((Bindings.isNotEmpty(emailField2.textProperty())));
-        email3.visibleProperty().bind((Bindings.isNotEmpty(emailField2.textProperty())));
+        email2.visibleProperty().bind(Bindings.and(emailField2.textProperty().isNotEmpty(), emailField1.textProperty().isNotEmpty()));
+        emailField3.visibleProperty().bind(Bindings.and(emailField2.textProperty().isNotEmpty(), emailField1.textProperty().isNotEmpty()));
+        email3.visibleProperty().bind((Bindings.and(email2.visibleProperty(), emailField3.textProperty().isNotEmpty())));
     }
-   
+    
 }
