@@ -7,7 +7,6 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
-import static javafx.application.Platform.exit;
 import javafx.beans.binding.Bindings;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -208,9 +207,9 @@ public class InfoController implements Initializable{
     private boolean controlloEmails(String[] emails){
         for(String email : emails){
             if((!email.isEmpty() && !(email.contains("@"))&& !(email.contains(".")) || (email.contains(" ")))){
-                Alert alert = new Alert(Alert.AlertType.WARNING);
+                Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Email non valida");
-                alert.setContentText("Inserire email valide");
+                alert.setContentText("I campi devono contenere delle email in formato valido.");
                 alert.showAndWait();
                 return true;
             }
