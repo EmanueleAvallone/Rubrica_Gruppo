@@ -113,32 +113,16 @@ public class InfoController implements Initializable{
         numeri[0]=numeroField1.getText();
         numeri[1]=numeroField2.getText();
         numeri[2]=numeroField3.getText();
-        for(String numero : numeri) {
-            if (!numero.matches("\\d*")) { // Controlla che siano solo numeri
-                // Mostra un messaggio di errore o lancia un'eccezione
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Errore");
-                alert.setHeaderText("Input non valido");
-                alert.setContentText("I campi del numero devono contenere solo cifre.");
-                alert.showAndWait();
-                return; // Interrompe l'esecuzione se c'è un errore
-            }
-    }
+        if(controlloNumeri(numeri))
+            return;
+    
     
         String[] emails = new String[3];
         
         emails[0]=emailField1.getText();
         emails[1]=emailField2.getText();
         emails[2]=emailField3.getText();
-        for(String email : emails){
-            if((!email.isEmpty() && !(email.contains("@"))&& !(email.contains(".")) || (email.contains(" ")))){
-                Alert alert = new Alert(Alert.AlertType.WARNING);
-                alert.setTitle("Email non valida");
-                alert.setContentText("Inserire email valide");
-                alert.showAndWait();
-                return;
-            }
-        }
+
         
         
          if (contattoDaModificare == null) {
@@ -204,6 +188,21 @@ public class InfoController implements Initializable{
         email2.visibleProperty().bind(Bindings.and(emailField2.textProperty().isNotEmpty(), emailField1.textProperty().isNotEmpty()));
         emailField3.visibleProperty().bind(Bindings.and(emailField2.textProperty().isNotEmpty(), emailField1.textProperty().isNotEmpty()));
         email3.visibleProperty().bind((Bindings.and(email2.visibleProperty(), emailField3.textProperty().isNotEmpty())));
+    }
+    
+    private boolean controlloNumeri(String[] numeri){
+        for(String numero : numeri) {
+            if (!numero.matches("\\d*")) { // Controlla che siano solo numeri
+                // Mostra un messaggio di errore o lancia un'eccezione
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Errore");
+                alert.setHeaderText("Input non valido");
+                alert.setContentText("I campi del numero devono contenere solo cifre.");
+                alert.showAndWait();
+                return true; // Interrompe l'esecuzione se c'è un errore
+            }
+        }
+    return false;
     }
     
 }
