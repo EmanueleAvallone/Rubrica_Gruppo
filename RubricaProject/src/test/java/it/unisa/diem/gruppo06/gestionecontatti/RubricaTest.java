@@ -1,6 +1,7 @@
 package it.unisa.diem.gruppo06.gestionecontatti;
 
 
+import java.util.Arrays;
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -187,7 +188,7 @@ public class RubricaTest {
         String[] email = {"e1@gmail.com","e2@gmail.com", null};
         
         Contatto c = new Contatto("Gregorio","Barberio",numeri,email);
-        List<Contatto> temp = List.of(c);
+        List<Contatto> temp = Arrays.asList(c);
         rubrica.creaContatto(c);
         
         assertEquals(temp,rubrica.getLista());
