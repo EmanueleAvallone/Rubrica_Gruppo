@@ -131,13 +131,13 @@ public class InfoController implements Initializable{
         emails[1]=emailField2.getText();
         emails[2]=emailField3.getText();
         for(String email : emails){
-                if((!email.isEmpty() && !(email.contains("@"))&& !(email.contains(".")) || (email.contains(" ")))){
-                    Alert alert = new Alert(Alert.AlertType.WARNING);
-                    alert.setTitle("Email non valida");
-                    alert.setContentText("Inserire email valide");
-                    alert.showAndWait();
-                    return;
-                }
+            if((!email.isEmpty() && !(email.contains("@"))&& !(email.contains(".")) || (email.contains(" ")))){
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("Email non valida");
+                alert.setContentText("Inserire email valide");
+                alert.showAndWait();
+                return;
+            }
         }
         
         
