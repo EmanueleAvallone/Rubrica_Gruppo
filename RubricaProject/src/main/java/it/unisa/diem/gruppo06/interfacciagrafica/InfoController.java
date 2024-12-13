@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import static javafx.application.Platform.exit;
 import javafx.beans.binding.Bindings;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -112,25 +113,16 @@ public class InfoController implements Initializable{
         numeri[0]=numeroField1.getText();
         numeri[1]=numeroField2.getText();
         numeri[2]=numeroField3.getText();
-        
+        if(controlloNumeri(numeri))
+            return;
+    
+    
         String[] emails = new String[3];
-        
         emails[0]=emailField1.getText();
         emails[1]=emailField2.getText();
         emails[2]=emailField3.getText();
-        for(int j=0; j<3; j++){
-                if(!(emails[j].contains("@"))&& (!emails[j].contains("."))){
-                    Alert alert = new Alert(Alert.AlertType.WARNING);
-                    alert.setTitle("Email non valida");
-                    alert.setContentText("Inserire email valide");
-                    Optional<ButtonType> result = alert.showAndWait();
-                    if(result.get()==ButtonType.OK){
-                        alert.close();
-                        Main.setRoot("SecondView");
-                    }
-                }
-        }
-        
+        if(controlloEmails(emails)) 
+            return;
         
          if (contattoDaModificare == null) {
             // Creazione di un nuovo contatto
@@ -197,4 +189,33 @@ public class InfoController implements Initializable{
         email3.visibleProperty().bind((Bindings.and(email2.visibleProperty(), emailField3.textProperty().isNotEmpty())));
     }
     
+    private boolean controlloNumeri(String[] numeri){
+        for(String numero : numeri) {
+            if (!numero.matches("\\d*")) { // Controlla che siano solo numeri
+                // Mostra un messaggio di errore o lancia un'eccezione
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Errore");
+                alert.setHeaderText("Input non valido");
+                alert.setContentText("I campi del numero devono contenere solo cifre.");
+                alert.showAndWait();
+                return true; // Interrompe l'esecuzione se c'è un errore
+            }
+        }
+    return false;
+    }
+    
+
+    private boolean controlloEmails(String[] emails){
+        for(String email : emails){
+            if((!email.isEmpty() && !(email.contains("@"))&& !(email.contains(".")) || (email.contains(" ")))){
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("Email non valida");
+                alert.setContentText("Inserire email valide");
+                alert.showAndWait();
+                return true;
+            }
+        }
+    return false;
+    }
+
 }

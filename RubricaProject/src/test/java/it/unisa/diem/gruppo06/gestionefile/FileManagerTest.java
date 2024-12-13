@@ -72,7 +72,6 @@ public class FileManagerTest {
     @Test
     public void testSalvaSuFile() throws IOException {
         System.out.println("salvaSuFile");
-        FileManager fileManager = new FileManager();
         // Creazione di una rubrica di esempio
         InterfacciaRubrica rubrica = new Rubrica();
         rubrica.creaContatto(new Contatto("Emanuele", "Barbato", new String[]{"3352637284", "", ""}, new String[]{"emanuele@gmail.com", "", ""}));

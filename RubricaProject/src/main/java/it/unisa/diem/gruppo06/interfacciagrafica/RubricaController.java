@@ -116,6 +116,15 @@ public class RubricaController implements Initializable{
         });
         
         table1.setItems(contatti);
+        infoBtn.setDisable(true);
+        eliminaBtn.setDisable(true);
+        pennaBtn.setDisable(true);
+        table1.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+        boolean contattoSelezionato = (newValue != null);
+        infoBtn.setDisable(!contattoSelezionato);
+        eliminaBtn.setDisable(!contattoSelezionato);
+        pennaBtn.setDisable(!contattoSelezionato);
+        });
         
         table1.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             
