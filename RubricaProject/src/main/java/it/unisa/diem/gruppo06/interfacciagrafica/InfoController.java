@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import static javafx.application.Platform.exit;
 import javafx.beans.binding.Bindings;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -118,16 +119,13 @@ public class InfoController implements Initializable{
         emails[0]=emailField1.getText();
         emails[1]=emailField2.getText();
         emails[2]=emailField3.getText();
-        for(int j=0; j<3; j++){
-                if(!(emails[j].contains("@"))&& (!emails[j].contains("."))){
+        for(String email : emails){
+                if((!email.isEmpty() && !(email.contains("@"))&& !(email.contains(".")) || (email.contains(" ")))){
                     Alert alert = new Alert(Alert.AlertType.WARNING);
                     alert.setTitle("Email non valida");
                     alert.setContentText("Inserire email valide");
-                    Optional<ButtonType> result = alert.showAndWait();
-                    if(result.get()==ButtonType.OK){
-                        alert.close();
-                        Main.setRoot("SecondView");
-                    }
+                    alert.showAndWait();
+                    return;
                 }
         }
         
