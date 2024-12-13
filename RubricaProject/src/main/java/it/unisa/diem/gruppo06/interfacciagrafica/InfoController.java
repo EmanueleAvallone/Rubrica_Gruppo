@@ -108,15 +108,29 @@ public class InfoController implements Initializable{
         InterfacciaRubrica r;
         r=RubricaController.getRubrica();
         
-        String[] numeri = new String[3];
+        String[] numeri = new String[3];     
         numeri[0]=numeroField1.getText();
         numeri[1]=numeroField2.getText();
         numeri[2]=numeroField3.getText();
         
         String[] emails = new String[3];
+        
         emails[0]=emailField1.getText();
         emails[1]=emailField2.getText();
         emails[2]=emailField3.getText();
+        for(int j=0; j<3; j++){
+                if(!(emails[j].contains("@"))&& (!emails[j].contains("."))){
+                    Alert alert = new Alert(Alert.AlertType.WARNING);
+                    alert.setTitle("Email non valida");
+                    alert.setContentText("Inserire email valide");
+                    Optional<ButtonType> result = alert.showAndWait();
+                    if(result.get()==ButtonType.OK){
+                        alert.close();
+                        Main.setRoot("SecondView");
+                    }
+                }
+        }
+        
         
          if (contattoDaModificare == null) {
             // Creazione di un nuovo contatto
