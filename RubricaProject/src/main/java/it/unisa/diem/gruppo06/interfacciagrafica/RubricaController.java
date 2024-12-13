@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.application.Platform;
+import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -99,17 +100,30 @@ public class RubricaController implements Initializable{
     public void initialize(URL url, ResourceBundle rb) {
         fileManager= new FileManager();
         contatti = FXCollections.observableArrayList(rubrica.getLista());
-        //filteredContatti = new FilteredList<>(contatti);
+        
+        infoBtn.setDisable(true);
+        eliminaBtn.setDisable(true);
+        pennaBtn.setDisable(true);
+
+//filteredContatti = new FilteredList<>(contatti);
         cognomi.setCellValueFactory(new PropertyValueFactory<>("cognome"));
         nomi.setCellValueFactory(new PropertyValueFactory<>("nome"));
         telefoni.setCellValueFactory(new PropertyValueFactory<>("numeroTelefono1"));
         email.setCellValueFactory(new PropertyValueFactory<>("email1"));
-        
+
         searchField.textProperty().addListener((observable, oldValue, newValue) -> {
             aggiornaTabella(newValue);
         });
         
         table1.setItems(contatti);
+        
+        table1.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            
+            boolean contattoSelezionato = (newValue != null);
+            infoBtn.setDisable(!contattoSelezionato);
+            eliminaBtn.setDisable(!contattoSelezionato);
+            pennaBtn.setDisable(!contattoSelezionato);
+        });
         
         assert(table1.getColumns().size()==3);
         assert(fileManager!=null) && (contatti!=null);
@@ -131,45 +145,27 @@ public class RubricaController implements Initializable{
     @FXML
     private void visualizzaInfoBtn(ActionEvent event) throws IOException {
         Contatto c = table1.getSelectionModel().getSelectedItem();//prelevo il contatto selezionato
-        if(c!=null){
             FXMLLoader loader = Main.setRootAndGetLoader("SecondaView");
 
             InfoController info = loader.getController();
             info.setField(c,false);//imposto i field solo per la visualizzazione
-        }else{
-            this.createAndShowAlert(AlertType.WARNING, "Warning", 
-                         "Nessun contatto selezionato!", 
-                         "Selezionare il contatto di cui si vogliono visualizzare i dettagli.");
-        }
     }
 
     @FXML
     private void eliminaContattoBtn(ActionEvent event) {
         Contatto c = table1.getSelectionModel().getSelectedItem();//preleviamo l'elemento selezionato
-        if(c!=null){
             rubrica.eliminaContatto(c);
             contatti.setAll(rubrica.getLista());
             table1.setItems(contatti);
             searchField.setText("");
-        } else {
-            this.createAndShowAlert(AlertType.WARNING, "Warning", 
-                         "Nessun contatto selezionato!", 
-                         "Selezionare il contatto da eliminare.");
-        }
     }
 
     @FXML
     private void modificaContattoBtn(ActionEvent event) throws IOException {
         Contatto c = table1.getSelectionModel().getSelectedItem();
-        if(c!=null){
             FXMLLoader loader = Main.setRootAndGetLoader("SecondaView");
             InfoController info = loader.getController();
             info.setField(c,true);
-        }else{
-          this.createAndShowAlert(AlertType.WARNING, "Warning", 
-                         "Nessun contatto selezionato!", 
-                         "Selezionare il contatto da modificare.");
-        }
     }
     
      @FXML
