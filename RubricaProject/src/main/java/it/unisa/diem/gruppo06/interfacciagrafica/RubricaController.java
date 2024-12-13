@@ -100,7 +100,12 @@ public class RubricaController implements Initializable{
     public void initialize(URL url, ResourceBundle rb) {
         fileManager= new FileManager();
         contatti = FXCollections.observableArrayList(rubrica.getLista());
-        //filteredContatti = new FilteredList<>(contatti);
+        
+        infoBtn.setDisable(true);
+        eliminaBtn.setDisable(true);
+        pennaBtn.setDisable(true);
+
+//filteredContatti = new FilteredList<>(contatti);
         cognomi.setCellValueFactory(new PropertyValueFactory<>("cognome"));
         nomi.setCellValueFactory(new PropertyValueFactory<>("nome"));
         telefoni.setCellValueFactory(new PropertyValueFactory<>("numeroTelefono1"));
@@ -119,6 +124,14 @@ public class RubricaController implements Initializable{
         infoBtn.setDisable(!contattoSelezionato);
         eliminaBtn.setDisable(!contattoSelezionato);
         pennaBtn.setDisable(!contattoSelezionato);
+        });
+        
+        table1.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            
+            boolean contattoSelezionato = (newValue != null);
+            infoBtn.setDisable(!contattoSelezionato);
+            eliminaBtn.setDisable(!contattoSelezionato);
+            pennaBtn.setDisable(!contattoSelezionato);
         });
         
         assert(table1.getColumns().size()==3);
