@@ -84,6 +84,7 @@ public class ComparatoreContattiTest {
         
         o1 = new Contatto("Gregorio","Avallone",numeri,email);
         o2 = new Contatto("Emanuele","Avallone",numeri,email); 
+        
         int expResult = 2;
         instance = new ComparatoreContatti();
         int result = instance.compare(o1, o2);
@@ -103,6 +104,7 @@ public class ComparatoreContattiTest {
         
         o1 = new Contatto("Emanuele","Avallone",numeri,email);
         o2 = new Contatto("Gregorio","Avallone",numeri,email); 
+        
         int expResult = -2;
         instance = new ComparatoreContatti();
         int result = instance.compare(o1, o2);

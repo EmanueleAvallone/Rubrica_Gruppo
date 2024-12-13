@@ -119,6 +119,7 @@ public class RubricaController implements Initializable{
         infoBtn.setDisable(true);
         eliminaBtn.setDisable(true);
         pennaBtn.setDisable(true);
+        
         table1.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
         boolean contattoSelezionato = (newValue != null);
         infoBtn.setDisable(!contattoSelezionato);
@@ -223,9 +224,9 @@ public class RubricaController implements Initializable{
     
     private void createAndShowAlert(AlertType type, String title, String headerText, String contentText){
         Alert alert = new Alert(type);
-        alert.setTitle(title);
-        alert.setHeaderText(headerText);
-        alert.setContentText(contentText);
-        alert.showAndWait();    
+            alert.setTitle(title);
+            alert.setHeaderText(headerText);
+            alert.setContentText(contentText);
+            alert.showAndWait();    
     }
 }

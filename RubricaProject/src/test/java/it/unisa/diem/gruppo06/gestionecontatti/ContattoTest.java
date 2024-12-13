@@ -138,6 +138,7 @@ public class ContattoTest {
         setUp();
         String[] numeri = {"3987129003",null, null};        
         System.out.println("setNumeriTelefono");
+        
         contatto.setNumeriTelefono(numeri);
         String[] expResult = numeri;
         assertArrayEquals(expResult, contatto.getNumeriTelefono());
@@ -152,6 +153,7 @@ public class ContattoTest {
         setUp();
         String[] email = {"g@gmail.com","greg@outlook.com", null};        
         System.out.println("setNumeriTelefono");
+        
         contatto.setEmails(email);
         String[] expResult = email;
         assertArrayEquals(expResult, contatto.getEmails());
