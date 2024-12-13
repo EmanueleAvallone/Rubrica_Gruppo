@@ -18,6 +18,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.VBox;
 
 /**
@@ -222,4 +223,37 @@ public class InfoController implements Initializable{
     return false;
     }
 
+    @FXML
+    private void numero1KeyReleased(KeyEvent event) {
+        if (numeroField1.getText().equals("")) {
+                numeroField1.setText(numeroField2.getText());
+                numeroField2.setText("");
+            }
+        numero2KeyReleased(event);
+    }
+
+    @FXML
+    private void numero2KeyReleased(KeyEvent event) {
+        if (numeroField2.getText().equals("")) {
+                numeroField2.setText(numeroField3.getText());
+                numeroField3.setText("");
+            }
+    }
+
+    @FXML
+    private void email1KeyReleased(KeyEvent event) {
+        if (emailField1.getText().equals("")) {
+                emailField1.setText(emailField2.getText());
+                emailField2.setText("");
+            }
+        email2KeyReleased(event);
+    }
+
+    @FXML
+    private void email2KeyReleased(KeyEvent event) {
+        if (emailField2.getText().equals("")) {
+                emailField2.setText(emailField3.getText());
+                emailField3.setText("");
+            }
+    }   
 }

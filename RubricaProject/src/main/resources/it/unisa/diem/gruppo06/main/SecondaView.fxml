@@ -17,45 +17,23 @@
                <children>
                   <VBox fx:id="textContainer" maxHeight="483.0" maxWidth="598.0" minHeight="371.0" minWidth="556.0" prefHeight="371.0" prefWidth="556.0">
                      <children>
-                        <Label text="Nome">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </Label>
+                        <Label text="Nome" />
                         <TextField fx:id="nomeField" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="28.0" prefWidth="486.0">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
                         </TextField>
                         <Label text="Cognome">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
                            <VBox.margin>
                               <Insets top="10.0" />
                            </VBox.margin>
                         </Label>
-                        <TextField fx:id="cognomeField" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="28.0" prefWidth="486.0">
-                           <font>
-                              <Font size="14.0" />
-                           </font></TextField>
-                        <HBox alignment="BOTTOM_LEFT" prefHeight="31.0" prefWidth="200.0" spacing="117.0">
+                        <TextField fx:id="cognomeField" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="28.0" prefWidth="486.0" />
+                        <HBox alignment="BOTTOM_LEFT" prefHeight="31.0" prefWidth="200.0" spacing="110.0">
                            <children>
-                              <Label fx:id="numero1" text="Numero">
-                                 <font>
-                                    <Font size="14.0" />
-                                 </font>
-                              </Label>
-                              <Label fx:id="numero2" text="Numero">
-                                 <font>
-                                    <Font size="14.0" />
-                                 </font>
-                              </Label>
-                              <Label fx:id="numero3" text="Numero">
-                                 <font>
-                                    <Font size="14.0" />
-                                 </font>
-                              </Label>
+                              <Label fx:id="numero1" text="Numero" />
+                              <Label fx:id="numero2" text="Numero" />
+                              <Label fx:id="numero3" text="Numero" />
                            </children>
                            <padding>
                               <Insets top="15.0" />
@@ -63,40 +41,16 @@
                         </HBox>
                         <HBox prefHeight="27.0" prefWidth="165.0">
                            <children>
-                              <TextField fx:id="numeroField1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="28.0" prefWidth="162.0">
-                                 <font>
-                                    <Font size="14.0" />
-                                 </font>
-                              </TextField>
-                              <TextField fx:id="numeroField2" layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="28.0" prefWidth="162.0">
-                                 <font>
-                                    <Font size="14.0" />
-                                 </font>
-                              </TextField>
-                              <TextField fx:id="numeroField3" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="28.0" prefWidth="162.0">
-                                 <font>
-                                    <Font size="14.0" />
-                                 </font>
-                              </TextField>
+                              <TextField fx:id="numeroField1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" onKeyReleased="#numero1KeyReleased" prefHeight="28.0" prefWidth="162.0" />
+                              <TextField fx:id="numeroField2" layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" minHeight="-Infinity" onKeyReleased="#numero2KeyReleased" prefHeight="28.0" prefWidth="162.0" />
+                              <TextField fx:id="numeroField3" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="28.0" prefWidth="162.0" />
                            </children>
                         </HBox>
-                        <HBox alignment="BOTTOM_LEFT" prefHeight="31.0" prefWidth="200.0" spacing="134.0">
+                        <HBox alignment="BOTTOM_LEFT" prefHeight="31.0" prefWidth="200.0" spacing="123.0">
                            <children>
-                              <Label fx:id="email1" text="E-mail">
-                                 <font>
-                                    <Font size="14.0" />
-                                 </font>
-                              </Label>
-                              <Label fx:id="email2" text="E-mail">
-                                 <font>
-                                    <Font size="14.0" />
-                                 </font>
-                              </Label>
-                              <Label fx:id="email3" text="E-mail">
-                                 <font>
-                                    <Font size="14.0" />
-                                 </font>
-                              </Label>
+                              <Label fx:id="email1" text="E-mail" />
+                              <Label fx:id="email2" text="E-mail" />
+                              <Label fx:id="email3" text="E-mail" />
                            </children>
                            <padding>
                               <Insets top="15.0" />
@@ -104,21 +58,9 @@
                         </HBox>
                         <HBox layoutX="10.0" layoutY="118.0" prefHeight="27.0" prefWidth="203.0">
                            <children>
-                              <TextField fx:id="emailField1" minHeight="-Infinity" prefHeight="28.0" prefWidth="162.0">
-                                 <font>
-                                    <Font size="14.0" />
-                                 </font>
-                              </TextField>
-                              <TextField fx:id="emailField2" layoutX="10.0" layoutY="10.0" minHeight="-Infinity" prefHeight="28.0" prefWidth="162.0">
-                                 <font>
-                                    <Font size="14.0" />
-                                 </font>
-                              </TextField>
-                              <TextField fx:id="emailField3" layoutX="112.0" layoutY="10.0" minHeight="-Infinity" prefHeight="28.0" prefWidth="162.0">
-                                 <font>
-                                    <Font size="14.0" />
-                                 </font>
-                              </TextField>
+                              <TextField fx:id="emailField1" minHeight="-Infinity" onKeyReleased="#email1KeyReleased" prefHeight="28.0" prefWidth="162.0" />
+                              <TextField fx:id="emailField2" layoutX="10.0" layoutY="10.0" minHeight="-Infinity" onKeyReleased="#email2KeyReleased" prefHeight="28.0" prefWidth="162.0" />
+                              <TextField fx:id="emailField3" layoutX="112.0" layoutY="10.0" minHeight="-Infinity" prefHeight="28.0" prefWidth="162.0" />
                            </children>
                         </HBox>
                      </children>
