@@ -36,7 +36,7 @@ public class FileManager {
     */
     public void salvaSuFile(File selectedFile) throws IOException {
         InterfacciaRubrica r = RubricaController.getRubrica(); 
-        assert(r!=null);
+        assert(r.getLista()!=null);
         try(PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter(selectedFile)))){
 
 
