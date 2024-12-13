@@ -113,17 +113,9 @@ public class InfoController implements Initializable{
         numeri[0]=numeroField1.getText();
         numeri[1]=numeroField2.getText();
         numeri[2]=numeroField3.getText();
-        for(String numero : numeri) {
-            if (!numero.matches("\\d*")) { // Controlla che siano solo numeri
-                // Mostra un messaggio di errore o lancia un'eccezione
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Errore");
-                alert.setHeaderText("Input non valido");
-                alert.setContentText("I campi del numero devono contenere solo cifre.");
-                alert.showAndWait();
-                return; // Interrompe l'esecuzione se c'è un errore
-            }
-    }
+        if(controlloNumeri(numeri))
+            return;
+    
     
         String[] emails = new String[3];
         emails[0]=emailField1.getText();
@@ -197,6 +189,22 @@ public class InfoController implements Initializable{
         email3.visibleProperty().bind((Bindings.and(email2.visibleProperty(), emailField3.textProperty().isNotEmpty())));
     }
     
+    private boolean controlloNumeri(String[] numeri){
+        for(String numero : numeri) {
+            if (!numero.matches("\\d*")) { // Controlla che siano solo numeri
+                // Mostra un messaggio di errore o lancia un'eccezione
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Errore");
+                alert.setHeaderText("Input non valido");
+                alert.setContentText("I campi del numero devono contenere solo cifre.");
+                alert.showAndWait();
+                return true; // Interrompe l'esecuzione se c'è un errore
+            }
+        }
+    return false;
+    }
+    
+
     private boolean controlloEmails(String[] emails){
         for(String email : emails){
             if((!email.isEmpty() && !(email.contains("@"))&& !(email.contains(".")) || (email.contains(" ")))){
@@ -207,6 +215,7 @@ public class InfoController implements Initializable{
                 return true;
             }
         }
-        return false;
+    return false;
     }
+
 }
