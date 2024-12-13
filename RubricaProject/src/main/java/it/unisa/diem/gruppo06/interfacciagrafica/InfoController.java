@@ -194,14 +194,15 @@ public class InfoController implements Initializable{
     
     private boolean controlloNumeri(String[] numeri){
         for(String numero : numeri) {
-            if (!numero.matches("\\d*")) { // Controlla che siano solo numeri
-                // Mostra un messaggio di errore o lancia un'eccezione
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Errore");
-                alert.setHeaderText("Input non valido");
-                alert.setContentText("I campi del numero devono contenere solo cifre.");
-                alert.showAndWait();
-                return true; // Interrompe l'esecuzione se c'è un errore
+            for(int i=0;i<numero.length();i++){// Controlla che siano solo numeri
+                if(Character.isLetter(numero.charAt(i))){
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Errore");
+                    alert.setHeaderText("Input non valido");
+                    alert.setContentText("I campi del numero devono contenere solo cifre.");
+                    alert.showAndWait();
+                    return true; // Interrompe l'esecuzione se c'è un errore
+                }
             }
         }
     return false;
@@ -210,7 +211,7 @@ public class InfoController implements Initializable{
 
     private boolean controlloEmails(String[] emails){
         for(String email : emails){
-            if((!email.isEmpty() && !(email.contains("@"))&& !(email.contains(".")) || (email.contains(" ")))){
+            if((!email.isEmpty() && !(email.contains("@"))&& !(email.contains(".")))){
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Email non valida");
                 alert.setContentText("I campi devono contenere delle email in formato valido.");
