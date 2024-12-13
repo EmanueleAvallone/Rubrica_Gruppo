@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import static javafx.application.Platform.exit;
 import javafx.beans.binding.Bindings;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -108,7 +109,7 @@ public class InfoController implements Initializable{
         InterfacciaRubrica r;
         r=RubricaController.getRubrica();
         
-        String[] numeri = new String[3];
+        String[] numeri = new String[3];     
         numeri[0]=numeroField1.getText();
         numeri[1]=numeroField2.getText();
         numeri[2]=numeroField3.getText();
@@ -125,9 +126,20 @@ public class InfoController implements Initializable{
     }
     
         String[] emails = new String[3];
+        
         emails[0]=emailField1.getText();
         emails[1]=emailField2.getText();
         emails[2]=emailField3.getText();
+        for(String email : emails){
+                if((!email.isEmpty() && !(email.contains("@"))&& !(email.contains(".")) || (email.contains(" ")))){
+                    Alert alert = new Alert(Alert.AlertType.WARNING);
+                    alert.setTitle("Email non valida");
+                    alert.setContentText("Inserire email valide");
+                    alert.showAndWait();
+                    return;
+                }
+        }
+        
         
          if (contattoDaModificare == null) {
             // Creazione di un nuovo contatto
