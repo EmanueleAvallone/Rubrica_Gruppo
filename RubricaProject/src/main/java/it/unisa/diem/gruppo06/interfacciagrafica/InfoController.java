@@ -115,20 +115,11 @@ public class InfoController implements Initializable{
         numeri[2]=numeroField3.getText();
         
         String[] emails = new String[3];
-        
         emails[0]=emailField1.getText();
         emails[1]=emailField2.getText();
         emails[2]=emailField3.getText();
-        for(String email : emails){
-                if((!email.isEmpty() && !(email.contains("@"))&& !(email.contains(".")) || (email.contains(" ")))){
-                    Alert alert = new Alert(Alert.AlertType.WARNING);
-                    alert.setTitle("Email non valida");
-                    alert.setContentText("Inserire email valide");
-                    alert.showAndWait();
-                    return;
-                }
-        }
-        
+        if(controlloEmails(emails)) 
+            return;
         
          if (contattoDaModificare == null) {
             // Creazione di un nuovo contatto
@@ -195,4 +186,16 @@ public class InfoController implements Initializable{
         email3.visibleProperty().bind((Bindings.and(email2.visibleProperty(), emailField3.textProperty().isNotEmpty())));
     }
     
+    private boolean controlloEmails(String[] emails){
+        for(String email : emails){
+            if((!email.isEmpty() && !(email.contains("@"))&& !(email.contains(".")) || (email.contains(" ")))){
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("Email non valida");
+                alert.setContentText("Inserire email valide");
+                alert.showAndWait();
+                return true;
+            }
+        }
+        return false;
+    }
 }
