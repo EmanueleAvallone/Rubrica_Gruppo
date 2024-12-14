@@ -116,6 +116,9 @@ Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a0242d22797dd6743b49c91d8efef964b" id="r_a0242d22797dd6743b49c91d8efef964b"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0242d22797dd6743b49c91d8efef964b">setRoot</a> (String fxml)  throws IOException </td></tr>
 <tr class="memdesc:a0242d22797dd6743b49c91d8efef964b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cambia la scena principale.  <br /></td></tr>
 <tr class="separator:a0242d22797dd6743b49c91d8efef964b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a196e406ac7d36f14dc86e9761daf4ef9" id="r_a196e406ac7d36f14dc86e9761daf4ef9"><td class="memItemLeft" align="right" valign="top">static FXMLLoader&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a196e406ac7d36f14dc86e9761daf4ef9">setRootAndGetLoader</a> (String fxml)  throws IOException </td></tr>
+<tr class="memdesc:a196e406ac7d36f14dc86e9761daf4ef9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cambia la scena principale e restituisce l'FXML loader utilizzato.  <br /></td></tr>
+<tr class="separator:a196e406ac7d36f14dc86e9761daf4ef9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abda4a26ccdaf0a9843632562b8b137c5" id="r_abda4a26ccdaf0a9843632562b8b137c5"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abda4a26ccdaf0a9843632562b8b137c5">main</a> (String[] args)</td></tr>
 <tr class="memdesc:abda4a26ccdaf0a9843632562b8b137c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Metodo principale per avviare l'applicazione.  <br /></td></tr>
 <tr class="separator:abda4a26ccdaf0a9843632562b8b137c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -154,7 +157,6 @@ Static Public Member Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section post"><dt>Postcondition</dt><dd>L'applicazione si avvia visualizzando la scena principale </dd></dl>
 
 </div>
 </div>
@@ -198,6 +200,47 @@ Static Public Member Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="a196e406ac7d36f14dc86e9761daf4ef9" name="a196e406ac7d36f14dc86e9761daf4ef9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a196e406ac7d36f14dc86e9761daf4ef9">&#9670;&#160;</a></span>setRootAndGetLoader()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static FXMLLoader it.unisa.diem.gruppo06.main.Main.setRootAndGetLoader </td>
+          <td>(</td>
+          <td class="paramtype">String</td>          <td class="paramname"><span class="paramname"><em>fxml</em></span></td><td>)</td>
+          <td> throws IOException</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Cambia la scena principale e restituisce l'FXML loader utilizzato. </p>
+<p>Consente di cambiare la scena caricando un file FXML, inoltre restituisce un FXMLLoader necessario per caricare il file fxml associato alla scena</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">fxml</td><td>Nome del file FXML da caricare </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>FXMLLoader usato per caricare il file fxml </dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">IOException</td><td>Se si verifica un errore durante il caricamento del file FXML </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="a29f31fda0b2fa93867def525353a04df" name="a29f31fda0b2fa93867def525353a04df"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a29f31fda0b2fa93867def525353a04df">&#9670;&#160;</a></span>start()</h2>
 
@@ -214,7 +257,7 @@ Static Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Metodo di avvio dell'applicazione JavaFX. </p>
-<p>Imposta la scena principale</p>
+<p>Imposta la scena principale e la mostra</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">stage</td><td>Lo stage principale dell'applicazione. </td></tr>
