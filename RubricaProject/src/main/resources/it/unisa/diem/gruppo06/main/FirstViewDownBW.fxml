@@ -26,7 +26,7 @@
             <Font size="18.0" />
           </font>
         </Label>
-            <TableView fx:id="table1" layoutY="41.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="403.0" prefWidth="601.0" style="-fx-background-color: #ffffff;">
+            <TableView fx:id="contactsTable" layoutY="41.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="403.0" prefWidth="601.0" style="-fx-background-color: #ffffff;">
               <columns>
                 <TableColumn fx:id="cognomi" prefWidth="134.03768920898438" text="Cognome" />
                 <TableColumn fx:id="nomi" prefWidth="154.58871459960938" text="Nome" />

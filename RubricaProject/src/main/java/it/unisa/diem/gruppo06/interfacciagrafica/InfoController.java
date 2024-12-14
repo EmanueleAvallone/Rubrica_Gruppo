@@ -14,6 +14,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
@@ -56,8 +57,6 @@ public class InfoController implements Initializable{
     private Button salva;
     @FXML
     private VBox textContainer;
-
-    private Contatto contattoDaModificare = null;
     @FXML
     private Label numero1;
     @FXML
@@ -71,7 +70,7 @@ public class InfoController implements Initializable{
     @FXML
     private Label email2;
     
-    
+    private Contatto contattoDaModificare = null;
    
 
     
@@ -92,10 +91,9 @@ public class InfoController implements Initializable{
     @FXML
     private void annullaBtn(ActionEvent event) throws IOException {  
         if(contattoDaModificare!=null){
-           Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-           alert.setTitle("Annullamento operazione");
-           alert.setHeaderText(null);
-           alert.setContentText("Sei sicuro di voler annullare l'operazione? Le modifiche fatte andranno perse.");
+           Alert alert = createAlert(AlertType.CONFIRMATION, 
+                   "Annullamento operazione", null, 
+                   "Sei sicuro di voler annullare l'operazione? Le modifiche fatte andranno perse.");
            Optional<ButtonType> result = alert.showAndWait();
            if(result.get()==ButtonType.OK)
                 Main.setRoot("FirstViewDownBW"); 
@@ -169,9 +167,11 @@ public class InfoController implements Initializable{
     private void setFieldContent(Contatto c){      
         nomeField.setText(c.getNome());
         cognomeField.setText(c.getCognome());
+        
         numeroField1.setText(c.getNumeriTelefono()[0]);  
         numeroField2.setText(c.getNumeriTelefono()[1]);
         numeroField3.setText(c.getNumeriTelefono()[2]);
+        
         emailField1.setText(c.getEmails()[0]); 
         emailField2.setText(c.getEmails()[1]);     
         emailField3.setText(c.getEmails()[2]);    
@@ -197,10 +197,9 @@ public class InfoController implements Initializable{
         for(String numero : numeri) {
             for(int i=0;i<numero.length();i++){// Controlla che siano solo numeri
                 if(Character.isLetter(numero.charAt(i))){
-                    Alert alert = new Alert(Alert.AlertType.ERROR);
-                    alert.setTitle("Errore");
-                    alert.setHeaderText("Input non valido");
-                    alert.setContentText("I campi del numero devono contenere solo cifre.");
+                    Alert alert = createAlert(AlertType.ERROR, "Errore", 
+                            "Input non valido", 
+                            "I campi del numero devono contenere solo cifre.");
                     alert.showAndWait();
                     return true; // Interrompe l'esecuzione se c'è un errore
                 }
@@ -212,10 +211,10 @@ public class InfoController implements Initializable{
 
     private boolean controlloEmails(String[] emails){
         for(String email : emails){
-            if((!email.isEmpty() && !(email.contains("@"))&& !(email.contains(".")))){
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Email non valida");
-                alert.setContentText("I campi devono contenere delle email in formato valido.");
+            if((!email.isEmpty() && (!(email.contains("@")) || !(email.contains("."))))){
+                Alert alert = createAlert(AlertType.ERROR, 
+                        "Errore", "Input non valido", 
+                        "I campi devono contenere delle email in formato valido.");
                 alert.showAndWait();
                 return true;
             }
@@ -255,5 +254,13 @@ public class InfoController implements Initializable{
                 emailField2.setText(emailField3.getText());
                 emailField3.setText("");
             }
-    }   
+    }
+    
+    private Alert createAlert(AlertType type,String title, String headerText, String contentText){
+        Alert a = new Alert(type);
+        a.setTitle(title);
+        a.setHeaderText(headerText);
+        a.setContentText(contentText);
+        return a;
+    }
 }

@@ -10,7 +10,6 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.application.Platform;
-import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -47,9 +46,8 @@ public class RubricaController implements Initializable{
     private Button infoBtn;
     @FXML
     private Button eliminaBtn;
-
     @FXML
-    private TableView<Contatto> table1;
+    private TableView<Contatto> contactsTable;
     @FXML
     private TableColumn<Contatto, String> cognomi;
     @FXML
@@ -105,7 +103,6 @@ public class RubricaController implements Initializable{
         eliminaBtn.setDisable(true);
         pennaBtn.setDisable(true);
 
-//filteredContatti = new FilteredList<>(contatti);
         cognomi.setCellValueFactory(new PropertyValueFactory<>("cognome"));
         nomi.setCellValueFactory(new PropertyValueFactory<>("nome"));
         telefoni.setCellValueFactory(new PropertyValueFactory<>("numeroTelefono1"));
@@ -115,27 +112,23 @@ public class RubricaController implements Initializable{
             aggiornaTabella(newValue);
         });
         
-        table1.setItems(contatti);
-        infoBtn.setDisable(true);
-        eliminaBtn.setDisable(true);
-        pennaBtn.setDisable(true);
+        contactsTable.setItems(contatti);
         
-        table1.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-        boolean contattoSelezionato = (newValue != null);
-        infoBtn.setDisable(!contattoSelezionato);
-        eliminaBtn.setDisable(!contattoSelezionato);
-        pennaBtn.setDisable(!contattoSelezionato);
-        });
-        
-        table1.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-            
+        contactsTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             boolean contattoSelezionato = (newValue != null);
             infoBtn.setDisable(!contattoSelezionato);
             eliminaBtn.setDisable(!contattoSelezionato);
             pennaBtn.setDisable(!contattoSelezionato);
         });
         
-        assert(table1.getColumns().size()==3);
+        contactsTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {          
+            boolean contattoSelezionato = (newValue != null);
+            infoBtn.setDisable(!contattoSelezionato);
+            eliminaBtn.setDisable(!contattoSelezionato);
+            pennaBtn.setDisable(!contattoSelezionato);
+        });
+        
+        assert(contactsTable.getColumns().size()==3);
         assert(fileManager!=null) && (contatti!=null);
     }
 
@@ -154,7 +147,7 @@ public class RubricaController implements Initializable{
 
     @FXML
     private void visualizzaInfoBtn(ActionEvent event) throws IOException {
-        Contatto c = table1.getSelectionModel().getSelectedItem();//prelevo il contatto selezionato
+        Contatto c = contactsTable.getSelectionModel().getSelectedItem();//prelevo il contatto selezionato
             FXMLLoader loader = Main.setRootAndGetLoader("SecondaView");
 
             InfoController info = loader.getController();
@@ -163,19 +156,19 @@ public class RubricaController implements Initializable{
 
     @FXML
     private void eliminaContattoBtn(ActionEvent event) {
-        Contatto c = table1.getSelectionModel().getSelectedItem();//preleviamo l'elemento selezionato
-            rubrica.eliminaContatto(c);
-            contatti.setAll(rubrica.getLista());
-            table1.setItems(contatti);
-            searchField.setText("");
+        Contatto c = contactsTable.getSelectionModel().getSelectedItem();//preleviamo l'elemento selezionato
+        rubrica.eliminaContatto(c);
+        contatti.setAll(rubrica.getLista());
+        contactsTable.setItems(contatti);
+        searchField.setText("");
     }
 
     @FXML
     private void modificaContattoBtn(ActionEvent event) throws IOException {
-        Contatto c = table1.getSelectionModel().getSelectedItem();
-            FXMLLoader loader = Main.setRootAndGetLoader("SecondaView");
-            InfoController info = loader.getController();
-            info.setField(c,true);
+        Contatto c = contactsTable.getSelectionModel().getSelectedItem();
+        FXMLLoader loader = Main.setRootAndGetLoader("SecondaView");
+        InfoController info = loader.getController();
+        info.setField(c,true);
     }
     
      @FXML
@@ -186,7 +179,7 @@ public class RubricaController implements Initializable{
     private void aggiornaTabella(String searchText){
         ObservableList<Contatto> contattiFiltrati;
         contattiFiltrati = FXCollections.observableArrayList(rubrica.cercaContatto(searchText));
-        table1.setItems(contattiFiltrati);
+        contactsTable.setItems(contattiFiltrati);
     }
     
    
@@ -196,7 +189,7 @@ public class RubricaController implements Initializable{
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Scegliere il file in cui esportare i contatti");
      
-        Window window = (table1.getParent().getScene().getWindow());
+        Window window = (contactsTable.getParent().getScene().getWindow());
         File selectedFile = fileChooser.showSaveDialog(window);
         
         fileManager.salvaSuFile(selectedFile);
@@ -207,7 +200,7 @@ public class RubricaController implements Initializable{
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Scegliere il file da cui importare i contatti");
 
-        Window window = table1.getScene().getWindow();
+        Window window = contactsTable.getScene().getWindow();
         
         File selectedFile = fileChooser.showOpenDialog(window);
         if(selectedFile!=null){
